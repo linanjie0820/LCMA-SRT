@@ -3,4 +3,6 @@ Neural transducers provide an alignment-free framework for joint automatic speec
 ![LCMR-SRT](./train/LCMA-SRT.png)
 # Installation
 Please refer to [document](https://k2-fsa.github.io/icefall/installation/index.html) for installation.
-# 
+# Europarl-ST
+Please refer to this page to download the data: [Europarl-ST](https://www.mllp.upv.es/europarl-st/) 
+# Main Results
