@@ -118,14 +118,15 @@ torchrun --nproc_per_node=4 \
   --joiner-dim-st 256 \
   --use-tgt 0 \
   --enable-st 0 \
-  --asr-use-moe-adapter 1 \
-  --ast-use-moe-adapter 0 \
+  --asr-moe 1 \
+  --asr-src 1 \
+  --ast-moe 0 \
+  --ast-tgt 0 \
   --entropy-reg-asr 0.015 \
   --entropy-reg-ast 0.0 \
   --num-experts-asr 8 \
   --num-experts-ast 0 \
   --dump-moe-routing-stats 1 \
-  --use-srctgt-lang-ids 0 \
   --tgt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
   --srt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
   > ${log_path} 2>&1
