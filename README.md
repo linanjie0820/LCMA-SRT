@@ -66,6 +66,57 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
   </tbody>
 </table>
 
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Model</th>
+      <th rowspan="2">LMR (%)↓</th>
+      <th colspan="10">Average COMET ↑</th>
+    </tr>
+    <tr>
+      <th>de</th><th>en</th><th>es</th><th>fr</th><th>it</th><th>nl</th><th>pl</th><th>pt</th><th>ro</th><th>Avg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HENT-SRT-M20×9</td>
+      <td>0.65</td>
+      <td>0.507</td><td>0.656</td><td>0.587</td><td>0.542</td><td>0.565</td><td>0.558</td><td>0.550</td><td>0.609</td><td>0.598</td><td>0.575</td>
+    </tr>
+    <tr>
+      <td>HENT-SRT-M2M</td>
+      <td>84.95</td>
+      <td>0.380</td><td>0.543</td><td>0.478</td><td>0.427</td><td>0.435</td><td>0.401</td><td>0.385</td><td>0.471</td><td>0.406</td><td>0.436</td>
+    </tr>
+    <tr>
+      <td>LCMA-SRT</td>
+      <td>0.75</td>
+      <td><strong>0.574</strong></td><td><strong>0.715</strong></td><td><strong>0.682</strong></td><td><strong>0.627</strong></td>
+      <td><strong>0.656</strong></td><td><strong>0.613</strong></td><td><strong>0.616</strong></td><td><strong>0.693</strong></td><td><strong>0.678</strong></td><td><strong>0.651</strong></td>
+    </tr>
+    <tr>
+      <td>TC-MoE→MoE</td>
+      <td>85.23</td>
+      <td>0.380</td><td>0.559</td><td>0.476</td><td>0.426</td><td>0.438</td><td>0.395</td><td>0.386</td><td>0.472</td><td>0.408</td><td>0.438</td>
+    </tr>
+    <tr>
+      <td>TC-MoE→T-Bias</td>
+      <td>0.78</td>
+      <td>0.529</td><td>0.675</td><td>0.642</td><td>0.583</td><td>0.612</td><td>0.563</td><td>0.562</td><td>0.651</td><td>0.621</td><td>0.604</td>
+    </tr>
+    <tr>
+      <td>w/o TC-MoE</td>
+      <td>85.19</td>
+      <td>0.376</td><td>0.545</td><td>0.480</td><td>0.427</td><td>0.434</td><td>0.398</td><td>0.387</td><td>0.473</td><td>0.407</td><td>0.436</td>
+    </tr>
+    <tr>
+      <td>w/o SC-MoE</td>
+      <td>0.81</td>
+      <td>0.568</td><td>0.708</td><td>0.671</td><td>0.621</td><td>0.646</td><td>0.606</td><td>0.605</td><td>0.685</td><td>0.675</td><td>0.643</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Joint ASR+ST (All directions)
 ### HENT-SRT(9次Many-to-One)
