@@ -47,11 +47,10 @@ class HentSRTModel(nn.Module):
         entropy_reg_ast: float = 0.0,
         temperature_asr: float = 1.0,
         temperature_ast: float = 1.0,
-        use_srctgt_lang_ids: bool = True,
-        use_no_lang_ids: bool = False,
-        asr_use_src_embed: bool = False,
-        asr_moe_use_src_embed: bool = True,
-        ast_use_src_tgt_embed: bool = False,
+        asr_moe: bool = True,
+        asr_src: bool = True,
+        ast_moe: bool = True,
+        ast_tgt: bool = True,
         # task flags
         use_transducer: bool = True,
         use_ctc_asr: bool = True,
@@ -60,8 +59,6 @@ class HentSRTModel(nn.Module):
         use_attention_decoder: bool = False,
         freeze_asr: bool = False,
         freeze_frontend: bool = False,
-        asr_use_moe_adapter: bool = True,
-        ast_use_moe_adapter: bool = True,
     ):
         super().__init__()
         assert (
@@ -130,62 +127,50 @@ class HentSRTModel(nn.Module):
         self.freeze_frontend = freeze_frontend  # 是否同时冻结encoder_embed
         if self.freeze_asr:
             self._apply_freeze_asr()
-    
-        self.asr_use_moe_adapter = asr_use_moe_adapter
-        self.ast_use_moe_adapter = ast_use_moe_adapter
-        self.ast_use_src_tgt_embed = ast_use_src_tgt_embed
-        self.asr_use_src_embed = asr_use_src_embed
-        self.use_srctgt_lang_ids = use_srctgt_lang_ids
-        self.use_no_lang_ids = use_no_lang_ids
-        # ASR 分支
-        if asr_moe_use_src_embed:
-            num_langs = num_srt_langs_asr
-        else:
-            num_langs = 0
 
-        if asr_use_moe_adapter:
-            self.asr_moe = MoEAdapterDense(
+        # 规范化的新开关
+        self.asr_moe = asr_moe
+        self.asr_src = asr_src
+        self.ast_moe = ast_moe
+        self.ast_tgt = ast_tgt
+
+        # ASR 分支
+        self.asr_moe_layer: Optional[MoEAdapterDense] = None
+        if self.asr_moe:
+            num_langs_asr = num_srt_langs_asr if self.asr_src else 0
+            self.asr_moe_layer = MoEAdapterDense(
                 d_model=enc_asr.output_dim,
                 num_experts=num_experts_asr,
                 hidden_mult=1.3,
-                num_tasks=0,   # 不需要任务嵌入了，每个模块只服务一个任务
-                num_langs=num_langs,
+                num_tasks=0,   # 单任务，无需 task 嵌入
+                num_langs=num_langs_asr,
                 dropout=0.1,
                 entropy_reg=entropy_reg_asr,   # 建议>0，抑制塌缩
                 temperature=temperature_asr,
             )
-        if asr_use_src_embed:
-            self.lang_embed_asr = nn.Embedding(num_srt_langs_asr, enc_asr.output_dim)
+        self.lang_embed_asr = (
+            nn.Embedding(num_srt_langs_asr, enc_asr.output_dim) if (not self.asr_moe and self.asr_src) else None
+        )
 
         # AST 分支
-        if ast_use_moe_adapter:
-            if ast_use_src_tgt_embed:
-                # src / tgt 双嵌入，路由同时感知两种语言
-                num_langs = 0
-                num_src_langs = num_srt_langs_asr
-                num_tgt_langs = num_tgt_langs_ast
-            else:
-                num_src_langs = num_tgt_langs = 0
-                if use_srctgt_lang_ids:
-                    num_langs = num_srt_langs_asr * num_tgt_langs_ast
-                else:
-                    num_langs = num_tgt_langs_ast
-                if use_no_lang_ids:
-                    num_langs = 0
-            self.ast_moe = MoEAdapterDense(
+        self.ast_moe_layer: Optional[MoEAdapterDense] = None
+        if self.ast_moe:
+            num_langs_ast = num_tgt_langs_ast if self.ast_tgt else 0
+            self.ast_moe_layer = MoEAdapterDense(
                 d_model=enc_st.output_dim,
                 num_experts=num_experts_ast,
                 hidden_mult=1.3,
                 num_tasks=0,
-                num_langs=num_langs,
-                num_src_langs=num_src_langs,
-                num_tgt_langs=num_tgt_langs,
+                num_langs=num_langs_ast,
+                num_src_langs=0,
+                num_tgt_langs=0,
                 dropout=0.1,
                 entropy_reg=entropy_reg_ast,
                 temperature=temperature_ast,
             )
-        else:
-            self.lang_embed_ast = nn.Embedding(num_tgt_langs_ast, enc_st.output_dim)
+        self.lang_embed_ast = (
+            nn.Embedding(num_tgt_langs_ast, enc_st.output_dim) if (not self.ast_moe and self.ast_tgt) else None
+        )
 
     def _apply_freeze_asr(self):
         to_freeze = []
@@ -252,11 +237,17 @@ class HentSRTModel(nn.Module):
             asr_x = asr_x.detach()        
         
         w_asr: Optional[torch.Tensor] = None
-        if self.asr_use_moe_adapter:
-            asr_x_for_asr, w_asr = self.asr_moe(asr_x,lang_ids=srt_lang_ids if self.asr_moe.lang_embed is not None else None)
-        elif self.asr_use_src_embed:
+        if self.asr_moe and self.asr_moe_layer is not None:
+            if self.asr_moe_layer.lang_embed is not None:
+                if srt_lang_ids is None:
+                    raise ValueError("srt_lang_ids is required when asr_moe=True and asr_src=True")
+                lang_ids = srt_lang_ids.to(dtype=torch.long, device=asr_x.device)
+            else:
+                lang_ids = None
+            asr_x_for_asr, w_asr = self.asr_moe_layer(asr_x, lang_ids=lang_ids)
+        elif self.asr_src and self.lang_embed_asr is not None:
             if srt_lang_ids is None:
-                raise ValueError("srt_lang_ids is required when asr_use_src_embed=True")
+                raise ValueError("srt_lang_ids is required when asr_src=True and asr_moe=False")
             srt_lang_ids = srt_lang_ids.to(dtype=torch.long, device=asr_x.device)
             lang_bias = self.lang_embed_asr(srt_lang_ids).unsqueeze(0).to(dtype=asr_x.dtype)
             asr_x_for_asr, w_asr = asr_x + lang_bias, None
@@ -269,9 +260,9 @@ class HentSRTModel(nn.Module):
         asr_ntc = asr_tnc.permute(1, 0, 2)
 
         moe_terms: List[torch.Tensor] = []
-        if self.asr_use_moe_adapter and w_asr is not None:
+        if self.asr_moe and w_asr is not None and self.asr_moe_layer is not None:
             pad_tb_asr = make_pad_mask(asr_len).transpose(0, 1)
-            moe_ent_asr = self.asr_moe.router_entropy_loss(w=w_asr, pad_mask_tb=pad_tb_asr)
+            moe_ent_asr = self.asr_moe_layer.router_entropy_loss(w=w_asr, pad_mask_tb=pad_tb_asr)
             moe_terms.append(moe_ent_asr)
 
         # 如果此轮不训练 / 不启用 ST，直接跳过后面的 ST encoder 计算
@@ -302,22 +293,25 @@ class HentSRTModel(nn.Module):
         st_x, st_len = self.enc_st(st_in, asr_len, make_pad_mask(asr_len))
         
         
-        if self.ast_use_moe_adapter:
-            ast_x_for_ast, w_ast = self.ast_moe(
+        if self.ast_moe and self.ast_moe_layer is not None:
+            if self.ast_moe_layer.lang_embed is not None:
+                if tgt_lang_ids is None:
+                    raise ValueError("tgt_lang_ids is required when ast_moe=True and ast_tgt=True")
+                lang_ids = tgt_lang_ids.to(dtype=torch.long, device=st_x.device)
+            else:
+                lang_ids = None
+            ast_x_for_ast, w_ast = self.ast_moe_layer(
                 st_x,
-                lang_ids=tgt_lang_ids if self.ast_moe.lang_embed is not None or self.ast_moe.lang_embed_tgt is not None else None,
-                src_lang_ids=srt_lang_ids if self.ast_moe.lang_embed_src is not None else None,
+                lang_ids=lang_ids,
             )
-        elif self.asr_use_moe_adapter == False and self.ast_use_moe_adapter == False:
-            ast_x_for_ast, w_ast = st_x, None
-        elif self.use_no_lang_ids:
-            ast_x_for_ast, w_ast = st_x, None
-        else:
+        elif self.ast_tgt and self.lang_embed_ast is not None:
             if tgt_lang_ids is None:
-                raise ValueError("tgt_lang_ids is required when ast_use_moe_adapter=False")
+                raise ValueError("tgt_lang_ids is required when ast_tgt=True and ast_moe=False")
             tgt_lang_ids = tgt_lang_ids.to(dtype=torch.long, device=st_x.device)
             lang_bias = self.lang_embed_ast(tgt_lang_ids).unsqueeze(0).to(dtype=st_x.dtype)
             ast_x_for_ast, w_ast = st_x + lang_bias, None
+        else:
+            ast_x_for_ast, w_ast = st_x, None
 
         if self.output_downsampling_factor_st == 2:
             st_tnc = self.enc_st.downsample_output(ast_x_for_ast)
@@ -332,9 +326,9 @@ class HentSRTModel(nn.Module):
         # return asr_ntc, asr_output_len, st_ntc, st_lens
         
 
-        if self.ast_use_moe_adapter and w_ast is not None:
+        if self.ast_moe and w_ast is not None and self.ast_moe_layer is not None:
             pad_tb_st = make_pad_mask(st_len).transpose(0, 1)
-            moe_ent_st = self.ast_moe.router_entropy_loss(w=w_ast, pad_mask_tb=pad_tb_st)
+            moe_ent_st = self.ast_moe_layer.router_entropy_loss(w=w_ast, pad_mask_tb=pad_tb_st)
             moe_terms.append(moe_ent_st)
 
         if moe_terms:
