@@ -6,3 +6,12 @@ Please refer to [document](https://k2-fsa.github.io/icefall/installation/index.h
 # Europarl-ST
 Please refer to this page to download the data: [Europarl-ST](https://www.mllp.upv.es/europarl-st/) 
 # Main Results
+## Multilingual ASR Pretraining:
+**WER (%) ↓**
+| Model     |   de |   en |   es |   fr |   it |   nl |   pl |   pt |   ro |  Avg |
+|:----------|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
+| CR-CTC    | 24.57| 18.59| 20.76| 19.24| 17.33| 36.75| 25.28| 19.82| 18.77| 22.35|
+| + MoE     | 24.39| 18.41| 20.16| 18.61| 17.28| 36.83| 24.36| 19.70| 18.79| 22.06|
+| + S-Bias  | 23.89| 17.60| 19.58| 17.41| 16.73| **34.72**| 23.63| 18.21| 17.97| 21.08|
+| + SC-MoE  | **23.34**| **17.45**| **19.41**| **17.34**| **16.27**| 35.20| **23.28**| **18.16**| **17.48**| **20.88**|
+
