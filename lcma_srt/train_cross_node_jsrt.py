@@ -344,14 +344,28 @@ def add_model_arguments(parser: argparse.ArgumentParser) -> None:
     )
     
     parser.add_argument(
-        "--asr-use-moe-adapter",
+        "--asr-moe",
         type=str2bool,
-        default=True
+        default=True,
+        help="ASR: enable MoE adapter."
     )
     parser.add_argument(
-        "--ast-use-moe-adapter",
+        "--asr-src",
         type=str2bool,
-        default=True
+        default=True,
+        help="ASR: use source language ID (in MoE routing if asr-moe, otherwise bias)."
+    )
+    parser.add_argument(
+        "--ast-moe",
+        type=str2bool,
+        default=True,
+        help="AST: enable MoE adapter."
+    )
+    parser.add_argument(
+        "--ast-tgt",
+        type=str2bool,
+        default=True,
+        help="AST: use target language ID (in MoE routing if ast-moe, otherwise bias)."
     )
     parser.add_argument(
         "--num-experts-asr",
@@ -372,35 +386,6 @@ def add_model_arguments(parser: argparse.ArgumentParser) -> None:
         "--entropy-reg-ast",
         type=float,
         default=0.0
-    )
-    parser.add_argument(
-        "--use-srctgt-lang-ids",
-        type=str2bool,
-        default=True
-    )
-    parser.add_argument(
-        "--ast-use-src-tgt-embed",
-        type=str2bool,
-        default=False,
-        help="若为 True，AST MoE 路由同时使用 src_embed + tgt_embed；默认使用组合 ID 单一路由嵌入。"
-    )
-    parser.add_argument(
-        "--asr-use-src-embed",
-        type=str2bool,
-        default=False,
-        help="对比实验：关闭 MoE 时为 ASR 增加源语偏置嵌入"
-    )
-        
-    parser.add_argument(
-        "--use-no-lang-ids",
-        type=str2bool,
-        default=False
-    )
-    parser.add_argument(
-        "--asr-moe-use-src-embed",
-        type=str2bool,
-        default=True,
-        help="若为 True，ASR MoE 路由使用源语嵌入"
     )
     parser.add_argument(
         "--temperature-asr",
@@ -629,19 +614,16 @@ def get_model(params: AttributeDict) -> nn.Module:
         entropy_reg_ast=params.entropy_reg_ast,
         temperature_asr=params.temperature_asr,
         temperature_ast=params.temperature_ast,
-        use_srctgt_lang_ids=params.use_srctgt_lang_ids,
-        asr_use_src_embed=params.asr_use_src_embed,
-        asr_moe_use_src_embed=params.asr_moe_use_src_embed,
-        ast_use_src_tgt_embed=params.ast_use_src_tgt_embed,
-        use_no_lang_ids=params.use_no_lang_ids,
+        asr_moe=params.asr_moe,
+        asr_src=params.asr_src,
+        ast_moe=params.ast_moe,
+        ast_tgt=params.ast_tgt,
         use_transducer=params.use_transducer,
         use_ctc_asr=params.use_ctc_asr,
         use_ctc_st=params.use_ctc_st,
         use_attention_decoder=params.use_attention_decoder,
         freeze_asr=params.freeze_asr,
         freeze_frontend=params.freeze_frontend,
-        asr_use_moe_adapter=params.asr_use_moe_adapter,
-        ast_use_moe_adapter=params.ast_use_moe_adapter,
     )
     return model
 
@@ -771,7 +753,7 @@ def load_checkpoint_if_available(
     加载策略：
       - 若指定了 --remove-st-head：沿用你原来的丢弃 ST 头逻辑。
       - 否则使用“安全加载”：
-          * 丢弃 ast_moe.router.* （避免你遇到的 512->1024 形状变化冲突）
+          * 丢弃 ast_moe_layer.router.* （避免你遇到的 512->1024 形状变化冲突）
           * 自动忽略 shape 不匹配键
           * 其余正常加载
       - 是否恢复 optimizer/scheduler/scaler：由 params.resume_optimizer_scheduler_scaler 控制
@@ -807,7 +789,7 @@ def load_checkpoint_if_available(
 
     # --- 安全加载分支：过滤 ast_moe.router.* + 自动忽略 shape 不匹配 ---
     # 如需关闭丢弃 router，可把 drop_prefixes 置为空列表。
-    drop_prefixes = ["ast_moe.router."]
+    drop_prefixes = ["ast_moe_layer.router."]
 
     rest = _safe_load_ckpt_with_filter(filename, model, drop_prefixes=drop_prefixes)
 
@@ -1126,32 +1108,21 @@ def compute_loss(
     collect_moe_stats = bool(getattr(params, "dump_moe_routing_stats", False))
 
     texts_asr: List[str] = supervisions["text"]
-    if params.asr_moe_use_src_embed:
+    if params.asr_src:
         srt_lang_ids = asr_source_lang_tensor(supervisions, params.srt_lang2id, strict=True)
     else:
         srt_lang_ids = None
     stats_srt_lang_ids = srt_lang_ids
-    # texts_st, tgt_lang_ids = _extract_st_texts_and_lang_ids(supervisions,use_tgt,params.tgt_lang2id)
+
     if params.enable_st:
         texts_st, tgt_lang_ids = _extract_st_texts_and_lang_ids(supervisions, use_tgt, params.tgt_lang2id)
-        if params.use_srctgt_lang_ids and not getattr(params, "ast_use_src_tgt_embed", False):
-            tgt_lang_ids = srt_lang_ids * params.num_tgt_langs_ast + tgt_lang_ids
-        elif params.use_no_lang_ids:
-            tgt_lang_ids = None
     else:
         texts_st, tgt_lang_ids = [], None
-        
-    # 统计仍使用组合后的 ID（若需要），便于路由日志按方向显示
+
     stats_tgt_lang_ids = tgt_lang_ids
-    if (
-        params.enable_st
-        and getattr(params, "use_srctgt_lang_ids", False)
-        and getattr(params, "ast_use_src_tgt_embed", False)
-        and tgt_lang_ids is not None
-    ):
-        stats_tgt_lang_ids = srt_lang_ids * params.num_tgt_langs_ast + tgt_lang_ids
     if collect_moe_stats and params.use_cr_ctc:
-        stats_srt_lang_ids = srt_lang_ids.repeat(2)
+        if stats_srt_lang_ids is not None:
+            stats_srt_lang_ids = stats_srt_lang_ids.repeat(2)
         if stats_tgt_lang_ids is not None:
             stats_tgt_lang_ids = stats_tgt_lang_ids.repeat(2)
 
@@ -1330,8 +1301,8 @@ def compute_loss(
     if collect_moe_stats:
         moe_batch_stats = {}
         base_model = model.module if isinstance(model, DDP) else model
-        if hasattr(base_model, "asr_moe"):
-            weights_asr = getattr(base_model.asr_moe, "last_router_weights", None)
+        if hasattr(base_model, "asr_moe_layer"):
+            weights_asr = getattr(base_model.asr_moe_layer, "last_router_weights", None)
             if (
                 weights_asr is not None
                 and stats_srt_lang_ids is not None
@@ -1348,8 +1319,8 @@ def compute_loss(
                         "跳过 ASR MoE 统计：batch size 与语言 ID 数不一致 "
                         f"({mean_asr.size(0)} vs {stats_srt_lang_ids.numel()})"
                     )
-        if params.enable_st and hasattr(base_model, "ast_moe"):
-            weights_st = getattr(base_model.ast_moe, "last_router_weights", None)
+        if params.enable_st and hasattr(base_model, "ast_moe_layer"):
+            weights_st = getattr(base_model.ast_moe_layer, "last_router_weights", None)
             if (
                 weights_st is not None
                 and stats_tgt_lang_ids is not None
@@ -1386,16 +1357,12 @@ def compute_validation_loss(
     model.eval()
     tot_loss = MetricsTracker()
     collect_moe_stats = bool(getattr(params, "dump_moe_routing_stats", False))
-    st_lang_labels = (
-        getattr(params, "srctgt_lang_list", params.tgt_lang_list)
-        if getattr(params, "use_srctgt_lang_ids", False)
-        else params.tgt_lang_list
-    )
+    st_lang_labels = params.tgt_lang_list
     moe_stats_asr = moe_counts_asr = moe_stats_st = moe_counts_st = None
     if collect_moe_stats:
         base_model = model.module if isinstance(model, DDP) else model
-        asr_experts = getattr(getattr(base_model, "asr_moe", None), "num_experts", 0)
-        ast_experts = getattr(getattr(base_model, "ast_moe", None), "num_experts", 0)
+        asr_experts = getattr(getattr(base_model, "asr_moe_layer", None), "num_experts", 0)
+        ast_experts = getattr(getattr(base_model, "ast_moe_layer", None), "num_experts", 0)
         moe_stats_asr, moe_counts_asr = _create_moe_stat_buffers(asr_experts)
         moe_stats_st, moe_counts_st = _create_moe_stat_buffers(ast_experts)
     for batch_idx, batch in enumerate(valid_dl):
@@ -1477,16 +1444,12 @@ def train_one_epoch(
     tot_loss = MetricsTracker()
     saved_bad_model = False
     collect_moe_stats = bool(getattr(params, "dump_moe_routing_stats", False)) and rank == 0
-    st_lang_labels = (
-        getattr(params, "srctgt_lang_list", params.tgt_lang_list)
-        if getattr(params, "use_srctgt_lang_ids", False)
-        else params.tgt_lang_list
-    )
+    st_lang_labels = params.tgt_lang_list
     moe_stats_asr = moe_counts_asr = moe_stats_st = moe_counts_st = None
     if collect_moe_stats:
         base_model = model.module if isinstance(model, DDP) else model
-        asr_experts = getattr(getattr(base_model, "asr_moe", None), "num_experts", 0)
-        ast_experts = getattr(getattr(base_model, "ast_moe", None), "num_experts", 0)
+        asr_experts = getattr(getattr(base_model, "asr_moe_layer", None), "num_experts", 0)
+        ast_experts = getattr(getattr(base_model, "ast_moe_layer", None), "num_experts", 0)
         moe_stats_asr, moe_counts_asr = _create_moe_stat_buffers(asr_experts)
         moe_stats_st, moe_counts_st = _create_moe_stat_buffers(ast_experts)
 
@@ -1693,7 +1656,7 @@ def display_and_save_batch(
     
 
     texts: List[str] = supervisions["text"]
-    if params.asr_moe_use_src_embed:
+    if params.asr_src:
         srt_lang_ids = asr_source_lang_tensor(supervisions, params.srt_lang2id, strict=True)
     else:
         srt_lang_ids = None
@@ -1708,7 +1671,7 @@ def display_and_save_batch(
     print("DEBUG: Displaying text from the failing batch:")
     if texts:
         print(f"  ASR Text[0]: {texts[0]}")
-        if len(srt_lang_ids):
+        if srt_lang_ids is not None and len(srt_lang_ids):
             print(f"  ASR  LangID[0]: {int(srt_lang_ids[0])}")
     if texts_st:
         print(f"  ST  Text[0]: {texts_st[0]}")
