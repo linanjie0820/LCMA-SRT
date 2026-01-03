@@ -13,7 +13,7 @@ export TRANSFORMERS_NO_GIT=1
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 ASR_BPE_MODEL="data/Europarl-ST/bpe/asr9/bpe.model"
-AST_BPE_MODEL="data/Europarl-ST/bpe/ast_de/bpe.model"
+AST_BPE_MODEL="data/Europarl-ST/bpe/ast_de/bpe.model" # One for each language
 
 TRAIN_CUTS_PATHS="data/Europarl-ST/cuts_data/asr_and_ast_no_moe/merged_asr8_ast_x_de_shuffled.train.jsonl.gz"
 VALID_CUTS_PATHS="data/Europarl-ST/cuts_data/asr_and_ast_no_moe/merged_asr8_ast_x_de_shuffled.dev.jsonl.gz"
@@ -59,8 +59,8 @@ USE_CTC_ST=1
 USE_CR_CTC=1
 USE_ATT_DEC=0
 
-RESUME_OPT=0                # 是否恢复 optimizer/scheduler/scaler/sampler
-RESET_PROGRESS=1            # 只有跨阶段清零训练统计时才设 1
+RESUME_OPT=0                
+RESET_PROGRESS=1           
 RESUME_CKPT="exp/europarl/best-valid-loss.pt"
 
 # ========== 启动训练 ==========
@@ -121,16 +121,17 @@ torchrun --nproc_per_node=4 \
   --decoder-dim-st 256 \
   --joiner-dim-asr 256 \
   --joiner-dim-st 256 \
-  --use-tgt 0 \
+  --use-tgt 1 \
   --enable-st 1 \
-  --asr-use-moe-adapter 0 \
-  --ast-use-moe-adapter 0 \
+  --asr-moe 0 \
+  --asr-src 0 \
+  --ast-moe 0 \
+  --ast-tgt 0 \
   --entropy-reg-asr 0.0 \
   --entropy-reg-ast 0.0 \
   --num-experts-asr 0 \
   --num-experts-ast 0 \
   --dump-moe-routing-stats 0 \
-  --use-srctgt-lang-ids 0 \
   --tgt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
   --srt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
   --resume-from-checkpoint ${RESUME_CKPT} \
