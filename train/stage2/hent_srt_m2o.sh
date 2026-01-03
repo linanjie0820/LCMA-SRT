@@ -63,7 +63,7 @@ RESUME_OPT=0
 RESET_PROGRESS=1           
 RESUME_CKPT="exp/europarl/best-valid-loss.pt"
 
-# ========== 启动训练 ==========
+
 torchrun --nproc_per_node=4 \
   ${TRAIN_PY} \
   --world-size 4 \
