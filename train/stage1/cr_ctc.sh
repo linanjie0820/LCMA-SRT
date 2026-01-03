@@ -15,8 +15,8 @@ export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 ASR_BPE_MODEL="data/Europarl-ST/bpe/asr9/bpe.model"
 AST_BPE_MODEL="data/Europarl-ST/bpe/ast9/bpe.model"
 
-TRAIN_CUTS_PATHS="data/Europarl-ST/cuts_data/merged_asr9_shuffled.train.jsonl.gz"
-VALID_CUTS_PATHS="data/Europarl-ST/cuts_data/merged_asr9_shuffled.dev.jsonl.gz"
+TRAIN_CUTS_PATHS="data/Europarl-ST/cuts_data/asr_pre_train/merged_asr9_shuffled.train.jsonl.gz"
+VALID_CUTS_PATHS="data/Europarl-ST/cuts_data/asr_pre_train/merged_asr9_shuffled.dev.jsonl.gz"
 
 TRAIN_PY="lcma_srt/train_cross_node_jsrt.py"
 
