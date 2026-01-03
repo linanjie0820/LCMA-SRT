@@ -59,8 +59,8 @@ USE_CTC_ST=1
 USE_CR_CTC=1
 USE_ATT_DEC=0
 
-RESUME_OPT=0                # 是否恢复 optimizer/scheduler/scaler/sampler
-RESET_PROGRESS=1            # 只有跨阶段清零训练统计时才设 1
+RESUME_OPT=0                
+RESET_PROGRESS=1        
 RESUME_CKPT="exp/europarl/best-valid-loss.pt"
 
 # ========== 启动训练 ==========
