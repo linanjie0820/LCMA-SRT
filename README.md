@@ -15,17 +15,57 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 | + S-Bias  | 23.89| 17.60| 19.58| 17.41| 16.73| **34.72**| 23.63| 18.21| 17.97| 21.08|
 | + SC-MoE  | **23.34**| **17.45**| **19.41**| **17.34**| **16.27**| 35.20| **23.28**| **18.16**| **17.48**| **20.88**|
 ## Joint ASR+ST (Average)
-**Average BLEU ↑**
-| \- |
-| Model | WER (%)↓ | de | en | es | fr | it | nl | pl | pt | ro | Avg |
-|:--|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
-| HENT-SRT-M20×9 | 23.28 | 10.7 | 21.2 | 19.1 | 18.2 | 14.2 | 16.5 | 7.2 | 18.4 | 12.1 | 15.3 |
-| HENT-SRT-M2M | 16.65 | 2.6 | 12.8 | 5.5 | 4.0 | 1.8 | 3.5 | 1.2 | 4.9 | 2.5 | 4.3 |
-| LCMA-SRT | **15.71** | **15.2** | **25.9** | **25.8** | **24.7** | **20.0** | **20.5** | **10.7** | **23.9** | **17.6** | **20.5** |
-| TC-MoE→MoE | 16.42 | 2.3 | 14.7 | 4.7 | 3.3 | 1.7 | 2.7 | 1.1 | 4.5 | 2.0 | 4.1 |
-| TC-MoE→T-Bias | 15.84 | 13.1 | 22.7 | 23.5 | 22.3 | 17.7 | 18.1 | 8.3 | 21.8 | 14.5 | 18.0 |
-| w/o TC-MoE | 16.48 | 2.0 | 12.8 | 5.9 | 3.9 | 1.6 | 3.0 | 1.3 | 5.0 | 2.2 | 4.2 |
-| w/o SC-MoE | 16.11 | 14.5 | 24.9 | 25.0 | 24.6 | 19.6 | 20.0 | 10.5 | 23.7 | 17.5 | 20.0 |
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Model</th>
+      <th rowspan="2">WER (%)↓</th>
+      <th colspan="10">Average BLEU ↑</th>
+    </tr>
+    <tr>
+      <th>de</th><th>en</th><th>es</th><th>fr</th><th>it</th><th>nl</th><th>pl</th><th>pt</th><th>ro</th><th>Avg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HENT-SRT-M20×9</td>
+      <td>23.28</td>
+      <td>10.7</td><td>21.2</td><td>19.1</td><td>18.2</td><td>14.2</td><td>16.5</td><td>7.2</td><td>18.4</td><td>12.1</td><td>15.3</td>
+    </tr>
+    <tr>
+      <td>HENT-SRT-M2M</td>
+      <td>16.65</td>
+      <td>2.6</td><td>12.8</td><td>5.5</td><td>4.0</td><td>1.8</td><td>3.5</td><td>1.2</td><td>4.9</td><td>2.5</td><td>4.3</td>
+    </tr>
+    <tr>
+      <td>LCMA-SRT</td>
+      <td><strong>15.71</strong></td>
+      <td><strong>15.2</strong></td><td><strong>25.9</strong></td><td><strong>25.8</strong></td><td><strong>24.7</strong></td>
+      <td><strong>20.0</strong></td><td><strong>20.5</strong></td><td><strong>10.7</strong></td><td><strong>23.9</strong></td><td><strong>17.6</strong></td><td><strong>20.5</strong></td>
+    </tr>
+    <tr>
+      <td>TC-MoE→MoE</td>
+      <td>16.42</td>
+      <td>2.3</td><td>14.7</td><td>4.7</td><td>3.3</td><td>1.7</td><td>2.7</td><td>1.1</td><td>4.5</td><td>2.0</td><td>4.1</td>
+    </tr>
+    <tr>
+      <td>TC-MoE→T-Bias</td>
+      <td>15.84</td>
+      <td>13.1</td><td>22.7</td><td>23.5</td><td>22.3</td><td>17.7</td><td>18.1</td><td>8.3</td><td>21.8</td><td>14.5</td><td>18.0</td>
+    </tr>
+    <tr>
+      <td>w/o TC-MoE</td>
+      <td>16.48</td>
+      <td>2.0</td><td>12.8</td><td>5.9</td><td>3.9</td><td>1.6</td><td>3.0</td><td>1.3</td><td>5.0</td><td>2.2</td><td>4.2</td>
+    </tr>
+    <tr>
+      <td>w/o SC-MoE</td>
+      <td>16.11</td>
+      <td>14.5</td><td>24.9</td><td>25.0</td><td>24.6</td><td>19.6</td><td>20.0</td><td>10.5</td><td>23.7</td><td>17.5</td><td>20.0</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Joint ASR+ST (All directions)
 ### HENT-SRT(9次Many-to-One)
