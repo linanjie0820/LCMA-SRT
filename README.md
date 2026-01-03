@@ -16,6 +16,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 | + SC-MoE  | **23.34**| **17.45**| **19.41**| **17.34**| **16.27**| 35.20| **23.28**| **18.16**| **17.48**| **20.88**|
 ## Joint ASR+ST (Average)
 **Average BLEU ↑**
+| \- |
 | Model | WER (%)↓ | de | en | es | fr | it | nl | pl | pt | ro | Avg |
 |:--|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
 | HENT-SRT-M20×9 | 23.28 | 10.7 | 21.2 | 19.1 | 18.2 | 14.2 | 16.5 | 7.2 | 18.4 | 12.1 | 15.3 |
