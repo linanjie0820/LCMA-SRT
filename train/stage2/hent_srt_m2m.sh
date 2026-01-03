@@ -63,7 +63,6 @@ RESUME_OPT=0
 RESET_PROGRESS=1        
 RESUME_CKPT="exp/europarl/best-valid-loss.pt"
 
-# ========== 启动训练 ==========
 torchrun --nproc_per_node=4 \
   ${TRAIN_PY} \
   --world-size 4 \
@@ -123,16 +122,15 @@ torchrun --nproc_per_node=4 \
   --joiner-dim-st 256 \
   --use-tgt 1 \
   --enable-st 1 \
-  --asr-use-moe-adapter 0 \
-  --ast-use-moe-adapter 0 \
+  --asr-moe 0 \
+  --asr-src 0 \
+  --ast-moe 0 \
+  --ast-tgt 0 \
   --entropy-reg-asr 0.0 \
   --entropy-reg-ast 0.0 \
   --num-experts-asr 0 \
   --num-experts-ast 0 \
   --dump-moe-routing-stats 0 \
-  --asr-use-src-embed 0 \
-  --use-srctgt-lang-ids 0 \
-  --use-no-lang-ids 1 \
   --tgt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
   --srt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
   --resume-from-checkpoint ${RESUME_CKPT} \
