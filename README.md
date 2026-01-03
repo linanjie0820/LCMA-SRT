@@ -16,7 +16,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 | + MoE     | 24.39| 18.41| 20.16| 18.61| 17.28| 36.83| 24.36| 19.70| 18.79| 22.06|
 | + S-Bias  | 23.89| 17.60| 19.58| 17.41| 16.73| **34.72**| 23.63| 18.21| 17.97| 21.08|
 | + SC-MoE  | **23.34**| **17.45**| **19.41**| **17.34**| **16.27**| 35.20| **23.28**| **18.16**| **17.48**| **20.88**|
-## Joint ASR+ST (Average)
+## Many-to-Many Joint Training (Average)
 <table>
   <thead>
     <tr>
@@ -120,7 +120,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 </table>
 
 
-## Joint ASR+ST (All directions)
+## Many-to-Many Joint Training (All directions)
 ### HENT-SRT(Many-to-One)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
