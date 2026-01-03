@@ -191,7 +191,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 
 **WER (%) ↓**
 
-| 源\目标 | DE | EN | ES | FR | IT | NL | PL | PT | RO |
+| src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | DE | \- | 19.09 | 18.77 | 18.82 | 19.09 | 18.86 | 18.79 | 18.99 | 18.86 |
 | EN | 13.92 | \- | 13.94 | 14.02 | 13.79 | 13.84 | 13.99 | 13.90 | 13.53 |
@@ -262,7 +262,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 
 **LMR (%) ↓**
 
-| 源\目标 | DE | EN | ES | FR | IT | NL | PL | PT | RO |
+| src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | DE | \- | 0.34 | 0.56 | 0.64 | 0.82 | 1.84 | 0.36 | 2.89 | 1.62 |
 | EN | 0.32 | \- | 0.71 | 0.25 | 0.27 | 0.49 | 0.32 | 2.38 | 1.28 |
@@ -290,7 +290,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 
 ### LCMA-SRT(ASR+SCMOE+AST+MOE)
 **Bleu/Comet ↑**
-| 源\目标 | DE | EN | ES | FR | IT | NL | PL | PT | RO |
+| src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | DE | \- | 12.4/0.528 | 3.2/0.451 | 2.1/0.400 | 1.0/0.412 | 2.8/0.383 | 1.4/0.377 | 3.7/0.446 | 2.1/0.393 |
 | EN | 3.8/0.422 | \- | 9.9/0.535 | 6.0/0.467 | 3.1/0.495 | 4.6/0.424 | 1.3/0.421 | 7.5/0.528 | 4.1/0.463 |
@@ -304,7 +304,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 
 **LMR (%) ↓**
 
-| 源\目标 | DE | EN | ES | FR | IT | NL | PL | PT | RO |
+| src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | DE | \- | 44.09 | 91.70 | 93.43 | 96.22 | 87.51 | 88.57 | 86.63 | 84.42 |
 | EN | 79.25 | \- | 82.40 | 85.26 | 95.75 | 81.54 | 87.16 | 79.24 | 79.45 |
@@ -318,7 +318,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 
 **WER (%) ↓**
 
-| 源\目标 | DE | EN | ES | FR | IT | NL | PL | PT | RO |
+| src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | DE | \- | 18.83 | 18.76 | 18.75 | 18.92 | 18.74 | 18.61 | 18.81 | 18.85 |
 | EN | 13.28 | \- | 13.27 | 13.33 | 13.14 | 13.18 | 13.31 | 13.34 | 12.88 |
