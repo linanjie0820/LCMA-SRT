@@ -130,6 +130,7 @@ torchrun --nproc_per_node=4 \
   --num-experts-asr 0 \
   --num-experts-ast 0 \
   --dump-moe-routing-stats 0 \
+  --asr-use-src-embed 0 \
   --use-srctgt-lang-ids 0 \
   --use-no-lang-ids 1 \
   --tgt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
