@@ -120,7 +120,7 @@ torchrun --nproc_per_node=4 \
   --enable-st 0 \
   --asr-use-moe-adapter 0 \
   --ast-use-moe-adapter 0 \
-  --entropy-reg-asr 0.015 \
+  --entropy-reg-asr 0.0 \
   --entropy-reg-ast 0.0 \
   --num-experts-asr 0 \
   --num-experts-ast 0 \
