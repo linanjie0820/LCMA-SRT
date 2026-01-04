@@ -66,7 +66,6 @@ for TEST_CUTS_PATH in "${TEST_CUTS_PATHS[@]}"; do
   fi
 
   decoding_method_dir="modified_beam_search_beam20_${src_lang}_to_${tgt_lang}_cuts_test"
-  log "开始解码 ${TEST_CUTS_PATH}，输出目录 ${decoding_method_dir}"
   compute_cer_current=$compute_cer
 
   python /pfs/asr/ASR_AND_AST/asr2_and_ast3/zipformer_jsrt/decode_jsrt_bp.py \
