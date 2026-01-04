@@ -1,5 +1,5 @@
 # Introduction
-Neural transducers provide an alignment-free framework for joint automatic speech recognition (ASR) and speech translation (ST). Hierarchical transducer architectures further improve multilingual speech-to-text modeling by stacking a translation-focused encoder on top of an ASR encoder to better handle reordering. However, scaling hierarchical transducers to multilingual many-to-many settings remains challenging: fully shared models often suffer from negative transfer and unstable target-language generation, while training separate models per direction is computationally prohibitive. We propose LCMA-SRT (Language-Conditional Mixture-of-Experts Adapters for Speech Recognition and Translation), which augments a hierarchical transducer with language-conditional Mixture-of-Experts (MoE) adapters. A source-conditioned MoE adapter (SC-MoE) routes using the source-language embedding to improve acoustic–phonetic modeling and reduce cross-language interference for ASR. A target-conditioned MoE adapter (TC-MoE) routes using the desired target language to guide reordering and lexical selection and to mitigate cross-target interference in many-to-many ST. Experiments on Europarl-ST (9 languages, 72 directions) show that LCMA-SRT improves both ASR and ST within a single unified model, reducing average WER and increasing BLEU and COMET over strong hierarchical transducer baselines.
+Neural transducers provide an alignment-free framework for joint automatic speech recognition (ASR) and speech translation (ST). Hierarchical transducer architectures further improve multilingual speech-to-text modeling by stacking a translation-focused encoder on top of an ASR encoder to better handle reordering. However, scaling hierarchical transducers to multilingual many-to-many settings remains challenging: fully shared models often suffer from negative transfer and unstable target-language generation, while training separate models per direction is computationally prohibitive. We propose LCMA-SRT (Language-Conditional Mixture-of-Experts Adapters for Speech Recognition and Translation), which augments a hierarchical transducer with language-conditional Mixture-of-Experts (MoE) adapters. A source-conditioned MoE adapter (SRC-MoE) routes using the source-language embedding to improve acoustic–phonetic modeling and reduce cross-language interference for ASR. A target-conditioned MoE adapter (TGT-MoE) routes using the desired target language to guide reordering and lexical selection and to mitigate cross-target interference in many-to-many ST. Experiments on Europarl-ST (9 languages, 72 directions) show that LCMA-SRT improves both ASR and ST within a single joint model, reducing average WER and increasing BLEU and COMET over strong hierarchical transducer baselines.
 
 <img src="train/LCMA-SRT.png" alt="LCMR-SRT" width="60%">
 
@@ -15,7 +15,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 | CR-CTC    | 24.57| 18.59| 20.76| 19.24| 17.33| 36.75| 25.28| 19.82| 18.77| 22.35|
 | + MoE     | 24.39| 18.41| 20.16| 18.61| 17.28| 36.83| 24.36| 19.70| 18.79| 22.06|
 | + S-Bias  | 23.89| 17.60| 19.58| 17.41| 16.73| **34.72**| 23.63| 18.21| 17.97| 21.08|
-| + SC-MoE  | **23.34**| **17.45**| **19.41**| **17.34**| **16.27**| 35.20| **23.28**| **18.16**| **17.48**| **20.88**|
+| + SRC-MoE  | **23.34**| **17.45**| **19.41**| **17.34**| **16.27**| 35.20| **23.28**| **18.16**| **17.48**| **20.88**|
 ## Many-to-Many Joint Training (Average)
 <table>
   <thead>
@@ -46,22 +46,22 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
       <td><strong>20.0</strong></td><td><strong>20.5</strong></td><td><strong>10.7</strong></td><td><strong>23.9</strong></td><td><strong>17.6</strong></td><td><strong>20.5</strong></td>
     </tr>
     <tr>
-      <td>TC-MoE→MoE</td>
+      <td>TGT-MoE→MoE</td>
       <td>16.42</td>
       <td>2.3</td><td>14.7</td><td>4.7</td><td>3.3</td><td>1.7</td><td>2.7</td><td>1.1</td><td>4.5</td><td>2.0</td><td>4.1</td>
     </tr>
     <tr>
-      <td>TC-MoE→T-Bias</td>
+      <td>TGT-MoE→T-Bias</td>
       <td>15.84</td>
       <td>13.1</td><td>22.7</td><td>23.5</td><td>22.3</td><td>17.7</td><td>18.1</td><td>8.3</td><td>21.8</td><td>14.5</td><td>18.0</td>
     </tr>
     <tr>
-      <td>w/o TC-MoE</td>
+      <td>w/o TGT-MoE</td>
       <td>16.48</td>
       <td>2.0</td><td>12.8</td><td>5.9</td><td>3.9</td><td>1.6</td><td>3.0</td><td>1.3</td><td>5.0</td><td>2.2</td><td>4.2</td>
     </tr>
     <tr>
-      <td>w/o SC-MoE</td>
+      <td>w/o SRC-MoE</td>
       <td>16.11</td>
       <td>14.5</td><td>24.9</td><td>25.0</td><td>24.6</td><td>19.6</td><td>20.0</td><td>10.5</td><td>23.7</td><td>17.5</td><td>20.0</td>
     </tr>
@@ -97,22 +97,22 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
       <td><strong>0.656</strong></td><td><strong>0.613</strong></td><td><strong>0.616</strong></td><td><strong>0.693</strong></td><td><strong>0.678</strong></td><td><strong>0.651</strong></td>
     </tr>
     <tr>
-      <td>TC-MoE→MoE</td>
+      <td>TGT-MoE→MoE</td>
       <td>85.23</td>
       <td>0.380</td><td>0.559</td><td>0.476</td><td>0.426</td><td>0.438</td><td>0.395</td><td>0.386</td><td>0.472</td><td>0.408</td><td>0.438</td>
     </tr>
     <tr>
-      <td>TC-MoE→T-Bias</td>
+      <td>TGT-MoE→T-Bias</td>
       <td>0.78</td>
       <td>0.529</td><td>0.675</td><td>0.642</td><td>0.583</td><td>0.612</td><td>0.563</td><td>0.562</td><td>0.651</td><td>0.621</td><td>0.604</td>
     </tr>
     <tr>
-      <td>w/o TC-MoE</td>
+      <td>w/o TGT-MoE</td>
       <td>85.19</td>
       <td>0.376</td><td>0.545</td><td>0.480</td><td>0.427</td><td>0.434</td><td>0.398</td><td>0.387</td><td>0.473</td><td>0.407</td><td>0.436</td>
     </tr>
     <tr>
-      <td>w/o SC-MoE</td>
+      <td>w/o SRC-MoE</td>
       <td>0.81</td>
       <td>0.568</td><td>0.708</td><td>0.671</td><td>0.621</td><td>0.646</td><td>0.606</td><td>0.605</td><td>0.685</td><td>0.675</td><td>0.643</td>
     </tr>
@@ -206,7 +206,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 | RO | 14.59 | 14.20 | 14.52 | 14.42 | 14.17 | 14.59 | 14.49 | 14.65 | \- |
 
 
-### LCMA-SRT(ASR+SCMOE+AST+TCMOE)
+### LCMA-SRT(ASR+SRC-MOE+AST+TGT-MOE)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -248,7 +248,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 | PT | 12.37 | 12.72 | 12.28 | 12.37 | 12.08 | 12.38 | 12.40 | \- | 12.19 |
 | RO | 13.64 | 13.29 | 13.51 | 13.46 | 13.38 | 13.61 | 13.54 | 13.72 | \- |
 
-### LCMA-SRT(ASR+SCMOE+AST+TBias)
+### LCMA-SRT(ASR+SRC-MOE+AST+T-Bias)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -290,7 +290,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 | PT | 12.53 | 12.72 | 12.50 | 12.55 | 12.30 | 12.52 | 12.57 | \- | 12.30 |
 | RO | 13.99 | 13.63 | 13.93 | 13.82 | 13.62 | 13.98 | 13.88 | 14.01 | \- |
 
-### LCMA-SRT(ASR+SCMOE+AST+MOE)
+### LCMA-SRT(ASR+SRC-MOE+AST+MOE)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -332,7 +332,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 | PT | 13.15 | 13.39 | 13.10 | 13.18 | 12.96 | 13.16 | 13.12 | \- | 12.91 |
 | RO | 14.64 | 14.34 | 14.54 | 14.40 | 14.36 | 14.62 | 14.56 | 14.67 | \- |
 
-### LCMA-SRT(ASR+SCMOE+AST)
+### LCMA-SRT(ASR+SRC-MOE+AST)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -374,7 +374,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 | PT | 13.12 | 13.29 | 13.01 | 13.12 | 12.95 | 13.09 | 13.06 | \- | 12.82 |
 | RO | 15.04 | 14.96 | 14.91 | 14.92 | 14.77 | 15.05 | 14.99 | 15.11 | \- |
 
-### LCMA-SRT(ASR+AST+TCMOE)
+### LCMA-SRT(ASR+AST+TGT-MOE)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
