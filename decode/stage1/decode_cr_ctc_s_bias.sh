@@ -68,7 +68,7 @@ for TEST_CUTS_PATH in "${TEST_CUTS_PATHS[@]}"; do
   decoding_method_dir="modified_beam_search_beam20_${src_lang}_to_${tgt_lang}_cuts_test"
   compute_cer_current=$compute_cer
 
-  python /pfs/asr/ASR_AND_AST/asr2_and_ast3/zipformer_jsrt/decode_jsrt_bp.py \
+  python lcma_srt/zipformer_jsrt/decode_jsrt_bp.py \
     --iter $steps \
     --avg $avg \
     --use-averaged-model 0 \
