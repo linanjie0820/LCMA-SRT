@@ -66,10 +66,9 @@ for TEST_CUTS_PATH in "${TEST_CUTS_PATHS[@]}"; do
   fi
 
   decoding_method_dir="modified_beam_search_beam20_${src_lang}_to_${tgt_lang}_cuts_test"
-  log "开始解码 ${TEST_CUTS_PATH}，输出目录 ${decoding_method_dir}"
   compute_cer_current=$compute_cer
 
-  python lcma_srt/decode_jsrt_bp.py \
+  python /pfs/asr/ASR_AND_AST/asr2_and_ast3/zipformer_jsrt/decode_jsrt_bp.py \
     --iter $steps \
     --avg $avg \
     --use-averaged-model 0 \
@@ -113,12 +112,20 @@ for TEST_CUTS_PATH in "${TEST_CUTS_PATHS[@]}"; do
     --joiner-dim-st 256 \
     --use-tgt 0 \
     --force-first-lang 0 \
-    --asr-use-moe-adapter 0 \
-    --ast-use-moe-adapter 0 \
+    --asr-moe 0 \
+    --asr-src 0 \
+    --ast-moe 0 \
+    --ast-tgt 0 \
+    --num-experts-asr 0 \
+    --num-experts-ast 0 \
+    --entropy-reg-asr 0.0 \
+    --entropy-reg-ast 0.0 \
     --tgt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
     --srt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
     --enable-st 0 \
+    --dump-moe-routing-stats 0 \
     --model-name $MODEL_NAME
 done
 
 echo "--- Decoding script finished at $(date) ---"
+
