@@ -129,7 +129,6 @@ for TEST_CUTS_PATH in "${TEST_CUTS_PATHS[@]}"; do
   fi
 
   decoding_method_dir="modified_beam_search_beam20_${src_lang}_to_${tgt_lang}_cuts_test"
-  log "开始解码 ${TEST_CUTS_PATH}，输出目录 ${decoding_method_dir}"
   compute_cer_current=$compute_cer
   tgt_lang_token="<2${tgt_lang}>"
   python lcma_srt/decode_jsrt_bp.py \
@@ -177,14 +176,17 @@ for TEST_CUTS_PATH in "${TEST_CUTS_PATHS[@]}"; do
     --use-tgt 1 \
     --lang-tgt "${tgt_lang_token}" \
     --force-first-lang 1 \
-    --asr-use-moe-adapter 1 \
-    --ast-use-moe-adapter 1 \
+    --asr-moe 1 \
+    --asr-src 1 \
+    --ast-moe 1 \
+    --ast-tgt 1 \
     --num-experts-asr 8 \
     --num-experts-ast 16 \
+    --entropy-reg-asr 0.015 \
+    --entropy-reg-ast 0.015 \
     --tgt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
     --srt-langs "en,de,es,fr,it,nl,pl,pt,ro" \
     --dump-moe-routing-stats 1 \
-    --use-srctgt-lang-ids 0 \
     --enable-st 1 \
     --model-name $MODEL_NAME
 done
