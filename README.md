@@ -163,7 +163,7 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 | PT | 19.90 | 16.27 | 21.74 | 20.82 | 20.77 | 20.99 | 20.48 | \- | 20.53 |
 | RO | 22.32 | 15.85 | 21.87 | 22.04 | 23.97 | 22.88 | 23.63 | 22.82 | \- |
 
-### HENT-SRT(Many-to-Many) Best-valid 
+### HENT-SRT(Many-to-Many)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
