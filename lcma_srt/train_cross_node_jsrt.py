@@ -229,7 +229,7 @@ def add_encoder_args(group: argparse._ArgumentGroup, prefix: str = "asr") -> Non
 def add_model_arguments(parser: argparse.ArgumentParser) -> None:
     # ASR冻结
     parser.add_argument("--freeze-asr", type=str2bool, default=False)
-    parser.add_argument("--freeze-frontend", type=str2bool, default=False) # 冻结 encoder_embed
+    parser.add_argument("--freeze-frontend", type=str2bool, default=False)
 
     # Shared frontend
     parser.add_argument("--feature-dim", type=int, default=80,
