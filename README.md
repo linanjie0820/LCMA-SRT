@@ -209,7 +209,7 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
 | RO | 14.59 | 14.20 | 14.52 | 14.42 | 14.17 | 14.59 | 14.49 | 14.65 | \- |
 
 
-### LCMA-SRT(ASR+SRC-MOE+AST+TGT-MOE)
+### LCMA-SRT(ASRenc+SRC-MOE+STenc+TGT-MOE)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -251,7 +251,7 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
 | PT | 12.37 | 12.72 | 12.28 | 12.37 | 12.08 | 12.38 | 12.40 | \- | 12.19 |
 | RO | 13.64 | 13.29 | 13.51 | 13.46 | 13.38 | 13.61 | 13.54 | 13.72 | \- |
 
-### LCMA-SRT(ASR+SRC-MOE+AST+T-Bias)
+### LCMA-SRT(ASR+SRC-MOE+STenc+T-Bias)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -293,7 +293,7 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
 | PT | 12.53 | 12.72 | 12.50 | 12.55 | 12.30 | 12.52 | 12.57 | \- | 12.30 |
 | RO | 13.99 | 13.63 | 13.93 | 13.82 | 13.62 | 13.98 | 13.88 | 14.01 | \- |
 
-### LCMA-SRT(ASR+SRC-MOE+AST+MOE)
+### LCMA-SRT(ASRenc+SRC-MOE+STenc+MOE)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -335,7 +335,7 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
 | PT | 13.15 | 13.39 | 13.10 | 13.18 | 12.96 | 13.16 | 13.12 | \- | 12.91 |
 | RO | 14.64 | 14.34 | 14.54 | 14.40 | 14.36 | 14.62 | 14.56 | 14.67 | \- |
 
-### LCMA-SRT(ASR+SRC-MOE+AST)
+### LCMA-SRT(ASRenc+SRC-MOE+STenc)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -377,7 +377,7 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
 | PT | 13.12 | 13.29 | 13.01 | 13.12 | 12.95 | 13.09 | 13.06 | \- | 12.82 |
 | RO | 15.04 | 14.96 | 14.91 | 14.92 | 14.77 | 15.05 | 14.99 | 15.11 | \- |
 
-### LCMA-SRT(ASR+AST+TGT-MOE)
+### LCMA-SRT(ASRenc+STenc+TGT-MOE)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
