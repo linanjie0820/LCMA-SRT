@@ -13,7 +13,7 @@ from scaling import ScaledLinear
 from icefall.utils import add_sos, make_pad_mask, time_warp
 
 from moe_adapter import MoEAdapterDense
-class HentSRTModel(nn.Module):
+class LCMASRTModel(nn.Module):
     def __init__(
         self,
         encoder_embed: nn.Module,
