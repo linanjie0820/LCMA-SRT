@@ -217,12 +217,12 @@ class LibriSpeechAsrDataModule:
         )
         
         group.add_argument(
-            "--dev-name",  # 新参数
+            "--dev-name",  
             type=str,
             help="Path to the validation/dev dataset manifest file.",
         )
         group.add_argument(
-            "--test-name",  # 新参数
+            "--test-name",  
             type=str,
             help="Path to the test dataset manifest file.",
         )
@@ -573,13 +573,9 @@ class LibriSpeechAsrDataModule:
     @lru_cache()
     def dev_cuts(self) -> CutSet:
         logging.info("About to get dev cuts")
-        # return load_manifest_lazy(self.args.manifest_dir / "cuts_ja_val.jsonl.gz")
-        # return load_manifest_lazy(self.args.manifest_dir / "cuts_valid_Opensrc_Youtube_korean.jsonl.gz")
         return load_manifest_lazy(self.args.manifest_dir / self.args.dev_name)
 
     @lru_cache()
     def test_cuts(self) -> CutSet:
         logging.info("About to get test cuts")
-        # return load_manifest_lazy(self.args.manifest_dir / "cuts_ja_test.jsonl.gz")
         return load_manifest_lazy(self.args.manifest_dir / self.args.test_name)
-        # return load_manifest_lazy(self.args.manifest_dir / "cuts_test_Opensrc_Youtube_korean.jsonl.gz")
