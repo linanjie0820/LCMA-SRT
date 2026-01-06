@@ -207,7 +207,6 @@ def get_parser():
         "--model-name",
         type=str,
         default=None,
-        help="指定一个模型名称",
     )
     parser.add_argument(
         "--exp-dir",
@@ -401,7 +400,6 @@ def get_parser():
         "--dump-moe-routing-stats",
         type=str2bool,
         default=False,
-        help="若为 True，则在解码日志中输出语种与 MoE 专家的平均分配。",
     )
 
     parser.add_argument(
@@ -434,14 +432,12 @@ def get_parser():
         "--blank-penalty-asr",
         type=float,
         default=0.0,
-        help="ASR 解码时对 blank logit 施加的惩罚（仅解码期），0 表示不启用。"
     )
 
     parser.add_argument(
         "--blank-penalty-st",
         type=float,
         default=0.0,
-        help="ST 解码时对 blank logit 施加的惩罚（仅解码期），0 表示不启用。"
     )
 
     parser.add_argument("--use-tgt", type=str2bool, default=False)
@@ -454,7 +450,6 @@ def get_parser():
         "--force-first-lang",
         type=str2bool,
         default=False,
-        help="若为 True，则在解码时强制使用目标语的第一个 token。",
     )
 
     add_model_arguments(parser)
@@ -475,7 +470,6 @@ class _OutputLinearWithBlankPenalty(nn.Module):
             z[..., self.blank_id] = z[..., self.blank_id] - self.penalty
         return z
 
-    # 把权重属性也暴露出去，便于上游可能读取 .weight / .bias
     @property
     def weight(self):
         return self.linear.weight
@@ -486,34 +480,26 @@ class _OutputLinearWithBlankPenalty(nn.Module):
 
 
 class JoinerWithBlankPenalty(nn.Module):
-    """
-    代理所有属性到 inner joiner；拦截 forward + output_linear 以施加 blank penalty。
-    """
     def __init__(self, joiner: nn.Module, blank_id: int, penalty: float):
         super().__init__()
         self.inner = joiner
         self.blank_id = int(blank_id)
         self.penalty = float(penalty)
 
-        # 用带 BP 的线性层替换（仅替换 wrapper 上的属性；其他属性仍走代理）
-        # 这样 modified_beam_search 若显式调用 joiner.output_linear(...)，也会被施加 BP
         self.output_linear = _OutputLinearWithBlankPenalty(
             getattr(joiner, "output_linear"), self.blank_id, self.penalty
         )
 
     def forward(self, *args, **kwargs):
-        # 覆盖“直接调用 forward”的路径
         z = self.inner(*args, **kwargs)
         if self.penalty > 0.0:
             z[..., self.blank_id] = z[..., self.blank_id] - self.penalty
         return z
 
     def __getattr__(self, name: str):
-        # 先尝试拿到本对象已有的属性
         try:
             return super().__getattr__(name)
         except AttributeError:
-            # 其他一概代理给 inner joiner（encoder_proj/decoder_proj 等会走这里）
             return getattr(self.inner, name)
 
 
@@ -532,7 +518,8 @@ def decode_one_batch(
     srt_lang_ids: Optional[torch.Tensor] = None,
     tgt_lang_ids: Optional[torch.Tensor] = None,
 ) -> Dict[str, List[List[str]]]:
-    """Decode one batch and return the result in a dict. The dict has the
+    """
+    Decode one batch and return the result in a dict. The dict has the
     following format:
 
         - key: It indicates the setting used for decoding. For example,
@@ -745,7 +732,7 @@ def decode_one_batch(
                 beam=params.beam_size,
                 context_graph=context_graph,
                 lang_token_id=lang_tgt,
-                force_first_lang=params.force_first_lang,   # 关键开关
+                force_first_lang=params.force_first_lang,
             )
             for st_hyp in sp_st.decode(st_hyp_tokens):
                 st_hyps.append(st_hyp.split())
@@ -885,28 +872,15 @@ def _extract_st_texts_and_lang_ids(
     supervisions: List[Dict[str, Any]],
     use_tgt: bool,
     tgt_lang2id: Dict[str, int],
-    default_lang: str = None,   # 可选：当没有 custom['lang'] 时的兜底，如 'zh-cn'
+    default_lang: str = None, 
 ):
-    """
-    从 supervisions 中提取 ST 目标文本，并构造与之对齐的目标语 ID 列表。
-    返回:
-      st_texts: List[str]          # 长度 = 有 st_text 的 supervision 数
-      tgt_lang_ids: torch.LongTensor, shape [B]
-    说明:
-      - 与 st_texts 的顺序严格对齐，逐条 supervision 生成一个 lang_id。
-      - 如果 use_tgt=True，会在文本前拼接 <2xx> 标签，同时 lang_id 由 custom['lang'] 映射得到。
-      - 若某条样本缺少 custom['lang']，且提供了 default_lang，则回退到 default_lang；
-        否则抛出异常，帮助你尽早发现标注问题。
-    """
     default_lang = _normalize_lang_tag(default_lang)
     st_texts = []
     lang_ids: list[int] = []
 
     for cut in supervisions["cut"]:
-        # 常见数据里每个 cut 只有一条 supervision；若有多条，以下逻辑会为每条 st_text 产出一条 id
         for supervision in cut.supervisions:
             if hasattr(supervision, "custom") and "st_text" in supervision.custom:
-                # 取得目标语 tag
                 lang_tag = None
                 if "lang" in supervision.custom and supervision.custom["lang"]:
                     lang_tag = _normalize_lang_tag(supervision.custom["lang"])
@@ -914,27 +888,22 @@ def _extract_st_texts_and_lang_ids(
                     lang_tag = default_lang
 
                 if use_tgt:
-                    # 根据 lang_tag 拼接 <2xx> 前缀，并映射 lang_id
                     if lang_tag is None:
                         raise ValueError("Missing custom['lang'] and no default_lang provided.")
                     if lang_tag not in tgt_lang2id:
                         raise KeyError(f"Unknown target language tag: {lang_tag}. "
                                        f"Known: {list(tgt_lang2id.keys())}")
 
-                    # 统一拼接方式：f"<2{lang_tag}>"
                     supervision.custom["st_text"] = f"<2{lang_tag}>" + supervision.custom["st_text"]
                     lang_ids.append(tgt_lang2id[lang_tag])
                 else:
-                    # 不使用目标语 token 时，仍可根据 lang_tag 生成 id（若你需要）
                     if lang_tag is None:
-                        # 如不需要 id，可改为 continue；此处默认给 0 兜底
                         lang_ids.append(0)
                     else:
                         lang_ids.append(tgt_lang2id.get(lang_tag, 0))
 
                 st_texts.append(supervision.custom["st_text"])
 
-    # 转为张量 [B]
     tgt_lang_ids = torch.tensor(lang_ids, dtype=torch.long)
     return st_texts, tgt_lang_ids
 
@@ -944,24 +913,10 @@ def asr_source_lang_tensor(
     *,
     strict: bool = True,
 ) -> torch.LongTensor:
-    """
-    从 batch 的 supervisions 中提取 ASR 源语标签 (SupervisionSegment.language)，
-    与有 text 的样本一一对齐，并映射为 torch.LongTensor(dtype=torch.long)。
-
-    参数：
-      supervisions: 你贴的那个 dict（含 'text', 'cut', ...）
-      srt_lang2id: 语言到整数ID的映射，比如 {"en": 1, "zh-cn": 2}
-      strict: True=未知语言报错；False=未知语言回退到 0
-
-    返回：
-      torch.LongTensor，shape [B]，与 supervisions['text'] 对齐
-    """
     tags: List[Optional[str]] = []
 
-    # 优先按 cut.supervisions[*].language 收集（与有 text 的条目对齐）
     cuts: Iterable[Any] = supervisions.get("cut", [])
     for cut in cuts:
-        # 兼容对象/字典两种 cut
         sups = getattr(cut, "supervisions", None)
         if sups is None and isinstance(cut, dict):
             sups = cut.get("supervisions", [])
@@ -969,7 +924,6 @@ def asr_source_lang_tensor(
             continue
 
         for sup in sups:
-            # 兼容对象/字典两种 supervision
             if isinstance(sup, dict):
                 text = sup.get("text")
                 lang = sup.get("language")
@@ -978,7 +932,7 @@ def asr_source_lang_tensor(
                 lang = getattr(sup, "language", None)
 
             if text is None:
-                continue  # 只为有 text 的条目收集语言
+                continue 
             if lang == "English":
                 lang = "en"
             lang = _normalize_lang_tag(lang)
@@ -987,12 +941,9 @@ def asr_source_lang_tensor(
                 raise KeyError("Missing supervision['language'] for an ASR sample.")
             tags.append(lang)
 
-    # （可选）对齐检查：与顶层 text 数量一致
     if "text" in supervisions and isinstance(supervisions["text"], list):
         assert len(tags) == len(supervisions["text"]), \
-            f"ASR语言数({len(tags)})与text数({len(supervisions['text'])})不一致"
-
-    # 映射为ID
+            f"The number of ASR languages ​​({len(tags)}) is inconsistent with the number of texts ({len(supervisions['text'])})."
     if strict:
         ids = []
         for t in tags:
