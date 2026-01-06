@@ -251,7 +251,7 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
 | PT | 12.37 | 12.72 | 12.28 | 12.37 | 12.08 | 12.38 | 12.40 | \- | 12.19 |
 | RO | 13.64 | 13.29 | 13.51 | 13.46 | 13.38 | 13.61 | 13.54 | 13.72 | \- |
 
-### LCMA-SRT(ASR+SRC-MOE+STenc+T-Bias)
+### LCMA-SRT(ASRenc+SRC-MOE+STenc+T-Bias)
 **Bleu/Comet ↑**
 | src\tgt | DE | EN | ES | FR | IT | NL | PL | PT | RO |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
