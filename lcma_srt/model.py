@@ -14,12 +14,6 @@ from icefall.utils import add_sos, make_pad_mask, time_warp
 
 from moe_adapter import MoEAdapterDense
 class HentSRTModel(nn.Module):
-    """
-    Hierarchical Efficient Neural Transducer for Joint Speech Recognition & Translation (HENT-SRT).
-
-    This model stacks an ST encoder on top of an ASR encoder, and attaches two RNNT/CTC heads:
-    one for ASR (source language tokens) and one for ST (target language tokens).
-    """
     def __init__(
         self,
         encoder_embed: nn.Module,
@@ -66,7 +60,7 @@ class HentSRTModel(nn.Module):
         ), f"At least one of them should be True, but got use_transducer={use_transducer}, use_ctc={use_ctc_asr}"
         assert isinstance(enc_asr, EncoderInterface)
         assert isinstance(enc_st, EncoderInterface)
-        self.is_srt = True  # 供训练脚本识别这是 HENT-SRT 模型
+        self.is_srt = True
         self.encoder_embed = encoder_embed
         self.enc_asr = enc_asr
         self.enc_st = enc_st
@@ -124,17 +118,15 @@ class HentSRTModel(nn.Module):
             assert attention_decoder_st is None
 
         self.freeze_asr = freeze_asr
-        self.freeze_frontend = freeze_frontend  # 是否同时冻结encoder_embed
+        self.freeze_frontend = freeze_frontend
         if self.freeze_asr:
             self._apply_freeze_asr()
 
-        # 规范化的新开关
         self.asr_moe = asr_moe
         self.asr_src = asr_src
         self.ast_moe = ast_moe
         self.ast_tgt = ast_tgt
 
-        # ASR 分支
         self.asr_moe_layer: Optional[MoEAdapterDense] = None
         if self.asr_moe:
             num_langs_asr = num_srt_langs_asr if self.asr_src else 0
@@ -142,17 +134,17 @@ class HentSRTModel(nn.Module):
                 d_model=enc_asr.output_dim,
                 num_experts=num_experts_asr,
                 hidden_mult=1.3,
-                num_tasks=0,   # 单任务，无需 task 嵌入
+                num_tasks=0,   
                 num_langs=num_langs_asr,
                 dropout=0.1,
-                entropy_reg=entropy_reg_asr,   # 建议>0，抑制塌缩
+                entropy_reg=entropy_reg_asr,  
                 temperature=temperature_asr,
             )
         self.lang_embed_asr = (
             nn.Embedding(num_srt_langs_asr, enc_asr.output_dim) if (not self.asr_moe and self.asr_src) else None
         )
 
-        # AST 分支
+
         self.ast_moe_layer: Optional[MoEAdapterDense] = None
         if self.ast_moe:
             num_langs_ast = num_tgt_langs_ast if self.ast_tgt else 0
@@ -223,7 +215,6 @@ class HentSRTModel(nn.Module):
         else:
             x, x_lens = self.encoder_embed(x, x_lens)
             
-        # 进入 ASR 编码器
         pad0 = make_pad_mask(x_lens)
         x_tnc = x.permute(1, 0, 2)                    # (T,N,C)
 
@@ -254,7 +245,6 @@ class HentSRTModel(nn.Module):
         else:
             asr_x_for_asr, w_asr = asr_x, None
 
-        # ASR 支路
         asr_tnc = self.enc_asr.downsample_output(asr_x_for_asr)
         asr_output_len = self.output_downsampling(asr_len)
         asr_ntc = asr_tnc.permute(1, 0, 2)
@@ -265,7 +255,6 @@ class HentSRTModel(nn.Module):
             moe_ent_asr = self.asr_moe_layer.router_entropy_loss(w=w_asr, pad_mask_tb=pad_tb_asr)
             moe_terms.append(moe_ent_asr)
 
-        # 如果此轮不训练 / 不启用 ST，直接跳过后面的 ST encoder 计算
         w_ast: Optional[torch.Tensor] = None
         if not enable_st:
             dummy_st = torch.empty(0, device=asr_ntc.device)
@@ -287,7 +276,6 @@ class HentSRTModel(nn.Module):
             return asr_ntc, asr_output_len, dummy_st, dummy_lens, moe_ent_loss
 
 
-        # ST 支路（级联）
         from scaling import convert_num_channels
         st_in = convert_num_channels(asr_x_for_asr, self.enc_st.encoder_dim[0])
         st_x, st_len = self.enc_st(st_in, asr_len, make_pad_mask(asr_len))
