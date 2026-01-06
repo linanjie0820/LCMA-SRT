@@ -1,39 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-HENT-SRT training script (train.py)
-
-This script extends the standard K2/Icefall Zipformer training loop to support
-Hierarchical Efficient Neural Transducer with Self-Distillation for Joint
-Speech Recognition & Translation (HENT-SRT).
-
-Key features:
-- Two parallel heads (ASR & ST), each optionally using Transducer (RNN-T), CTC,
-  and/or an attention decoder.
-- Hierarchical encoders: ST encoder stacked on top of ASR encoder.
-- Optional consistency-regularized CTC (cr-ctc) and SpecAugment (time-mask ratio scaled
-  when CR-CTC enabled).
-- Dual BPE tokenizers (ASR and ST) and robust extraction for ST texts from Lhotse
-  supervisions (supports `supervisions['st_text']` or `supervisions['custom']`).
-- DDP support, checkpointing/averaging/scheduler identical to the reference script.
-
-Usage (example, 4 GPUs):
-
-export CUDA_VISIBLE_DEVICES="0,1,2,3"
-
-./train_hentsrt.py \
-  --world-size 4 \
-  --num-epochs 30 \
-  --start-epoch 1 \
-  --use-fp16 1 \
-  --exp-dir hentsrt/exp \
-  --full-libri 1 \
-  --max-duration 1000 \
-  --bpe-model-asr data/lang_bpe_500/bpe.model \
-  --bpe-model-st  data/lang_st_bpe_1k/bpe.model
-
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -100,8 +66,8 @@ from lhotse.dataset.sampling.base import CutSampler
 from lhotse.utils import fix_random_seed
 from lhotse import CutSet, load_manifest_lazy
 
-# HENT-SRT model
-from model import HentSRTModel
+# LCMA-SRT model
+from model import LCMASRTModel
 
 LRSchedulerType = Union[torch.optim.lr_scheduler._LRScheduler, LRScheduler]
 
@@ -421,7 +387,7 @@ def get_parser() -> argparse.ArgumentParser:
     )
 
     # Paths
-    parser.add_argument("--exp-dir", type=str, default="hentsrt/exp")
+    parser.add_argument("--exp-dir", type=str, default="exp")
     parser.add_argument("--baige-tb-dir", type=str, default="exp")
 
     # Optim & LR
@@ -447,7 +413,6 @@ def get_parser() -> argparse.ArgumentParser:
         "--dump-moe-routing-stats",
         type=str2bool,
         default=False,
-        help="若为 True，则在训练/验证日志与 TensorBoard 中输出 MoE 语种-专家统计（仅 rank 0）。",
     )
 
     # Checkpointing
@@ -588,7 +553,7 @@ def get_model(params: AttributeDict) -> nn.Module:
         attention_decoder_asr = get_attention_decoder("asr", params, params.vocab_size_asr, params.sos_id_asr, params.eos_id_asr)
         attention_decoder_st = get_attention_decoder("st", params, params.vocab_size_st, params.sos_id_st, params.eos_id_st)
 
-    model = HentSRTModel(
+    model = LCMASRTModel(
         encoder_embed=encoder_embed,
         enc_asr=enc_asr,
         enc_st=enc_st,
@@ -649,9 +614,6 @@ def get_spec_augment(params: AttributeDict) -> SpecAugment:
 # ------------------------------
 
 def _load_model_weights_drop_st_head(ckpt_path, model, st_prefixes=None, log_drops=True):
-    """
-    从 ckpt 加载参数，但无条件丢弃所有 ST 分支参数（无论 shape 是否匹配）。
-    """
     import torch, logging
     if st_prefixes is None:
         st_prefixes = [
@@ -669,7 +631,6 @@ def _load_model_weights_drop_st_head(ckpt_path, model, st_prefixes=None, log_dro
     keep, dropped = {}, []
     for k, v in src.items():
         if k in tgt and not is_st_key(k):
-            # 只保留非 ST 分支权重；形状不匹配会在 strict=False 下忽略
             keep[k] = v
         else:
             if is_st_key(k):
@@ -679,8 +640,6 @@ def _load_model_weights_drop_st_head(ckpt_path, model, st_prefixes=None, log_dro
     if log_drops and dropped:
         for k in dropped:
             logging.warning(f"[CKPT] Drop ST param unconditionally: {k}")
-
-    # 不返回 optimizer / scheduler / scaler，避免被上层误加载
     rest = {k: v for k, v in ckpt.items() if k not in ("model", "optimizer", "scheduler", "grad_scaler")}
     return {"missing": missing, "unexpected": unexpected, "dropped": dropped, **rest}
 
@@ -691,14 +650,6 @@ def _safe_load_ckpt_with_filter(
     drop_prefixes: Optional[List[str]] = None,
     log_mismatch: bool = True,
 ) -> Dict[str, Any]:
-    """
-    从 ckpt 加载模型参数，带过滤：
-      1) 丢弃所有以 drop_prefixes 开头的键（例如 'ast_moe.router.'）。
-      2) 自动跳过 shape 不匹配的键（打印 warning）。
-      3) 其余参数正常加载（strict=False）。
-
-    返回：ckpt 其余字段（去掉 'model' 后）用于上层决定是否恢复优化器/调度器等。
-    """
     import torch, logging
 
     drop_prefixes = drop_prefixes or []
@@ -721,7 +672,6 @@ def _safe_load_ckpt_with_filter(
         if k in tgt_state and tgt_state[k].shape == v.shape:
             keep[k] = v
         else:
-            # 不在目标模型里，或者 shape 不匹配，均跳过
             reason = "shape-mismatch" if (k in tgt_state) else "missing-in-target"
             dropped.append((k, reason))
 
@@ -736,8 +686,6 @@ def _safe_load_ckpt_with_filter(
             logging.warning(f"[CKPT] Missing keys after load (ok with strict=False): {missing[:8]}{' ...' if len(missing)>8 else ''}")
         if unexpected:
             logging.warning(f"[CKPT] Unexpected keys in ckpt (ignored): {unexpected[:8]}{' ...' if len(unexpected)>8 else ''}")
-
-    # 返回除 'model' 外的其它条目，供上层决定是否加载 optimizer/scheduler 等
     rest = {k: v for k, v in ckpt.items() if k != "model"}
     return rest
 
@@ -749,27 +697,13 @@ def load_checkpoint_if_available(
     optimizer: Optional[torch.optim.Optimizer] = None,
     scheduler: Optional[LRSchedulerType] = None,
 ) -> Optional[Dict[str, Any]]:
-    """
-    加载策略：
-      - 若指定了 --remove-st-head：沿用你原来的丢弃 ST 头逻辑。
-      - 否则使用“安全加载”：
-          * 丢弃 ast_moe_layer.router.* （避免你遇到的 512->1024 形状变化冲突）
-          * 自动忽略 shape 不匹配键
-          * 其余正常加载
-      - 是否恢复 optimizer/scheduler/scaler：由 params.resume_optimizer_scheduler_scaler 控制
-    """
-    # 选择要加载的 checkpoint 文件
     if params.resume_from_checkpoint and params.remove_st_head and params.start_batch == 0 and params.start_epoch == 1:
         filename = Path(params.resume_from_checkpoint)
         assert filename.is_file(), f"{filename} does not exist!"
         info = _load_model_weights_drop_st_head(filename, model)
-
-        # 平均模型不从 ckpt 恢复，直接拷贝当前模型（避免把 ST 头带回来）
         if model_avg is not None:
             with torch.no_grad():
                 model_avg.load_state_dict((model.module if hasattr(model, "module") else model).state_dict())
-
-        # 回填常用统计项
         if "params" in info:
             for k in ["best_train_epoch","best_valid_epoch","batch_idx_train","best_train_loss","best_valid_loss","cur_epoch"]:
                 if k in info["params"]:
@@ -787,18 +721,13 @@ def load_checkpoint_if_available(
 
     assert filename.is_file(), f"{filename} does not exist!"
 
-    # --- 安全加载分支：过滤 ast_moe.router.* + 自动忽略 shape 不匹配 ---
-    # 如需关闭丢弃 router，可把 drop_prefixes 置为空列表。
     drop_prefixes = ["ast_moe_layer.router."]
 
     rest = _safe_load_ckpt_with_filter(filename, model, drop_prefixes=drop_prefixes)
 
-    # 处理平均模型（保持与当前模型参数一致）
     if model_avg is not None:
         with torch.no_grad():
             model_avg.load_state_dict((model.module if hasattr(model, "module") else model).state_dict())
-
-    # 是否恢复优化器/调度器/梯度缩放
     saved_params: Dict[str, Any] = {}
     reset_progress = getattr(params, "reset_progress_stats", False)
     if params.resume_optimizer_scheduler_scaler and not reset_progress:
@@ -824,7 +753,6 @@ def load_checkpoint_if_available(
     elif "sampler" in rest and reset_progress:
         logging.info("Skipping sampler state restoration due to --reset-progress-stats=1")
 
-    # 回填训练过程统计（若 ckpt 有保存）
     resume_state = rest.get("params")
     if resume_state is None:
         fallback_state = {k: rest[k] for k in _RESUME_STATE_KEYS if k in rest}
@@ -913,23 +841,15 @@ def _extract_st_texts_and_lang_ids(
     supervisions: List[Dict[str, Any]],
     use_tgt: bool,
     tgt_lang2id: Dict[str, int],
-    default_lang: str = None,   # 可选：当没有 custom['lang'] 时的兜底，如 'zh-cn'
+    default_lang: str = None,  
 ):
-    """
-    从 supervisions 中提取 ST 目标文本，并构造与之对齐的目标语 ID 列表。
-    返回:
-      st_texts: List[str]          # 长度 = 有 st_text 的 supervision 数
-      tgt_lang_ids: torch.LongTensor, shape [B]
-    """
     default_lang = _normalize_lang_tag(default_lang)
     st_texts = []
     lang_ids: list[int] = []
 
     for cut in supervisions["cut"]:
-        # 常见数据里每个 cut 只有一条 supervision；若有多条，以下逻辑会为每条 st_text 产出一条 id
         for supervision in cut.supervisions:
             if hasattr(supervision, "custom") and "st_text" in supervision.custom:
-                # 取得目标语 tag
                 lang_tag = None
                 if "lang" in supervision.custom and supervision.custom["lang"]:
                     lang_tag = _normalize_lang_tag(supervision.custom["lang"])
@@ -937,7 +857,6 @@ def _extract_st_texts_and_lang_ids(
                     lang_tag = default_lang
 
                 if use_tgt:
-                    # 根据 lang_tag 拼接 <2xx> 前缀，并映射 lang_id
                     if lang_tag is None:
                         raise ValueError("Missing custom['lang'] and no default_lang provided.")
                     if lang_tag not in tgt_lang2id:
@@ -946,21 +865,15 @@ def _extract_st_texts_and_lang_ids(
                             f"Known: {list(tgt_lang2id.keys())}"
                         )
 
-                    # 统一拼接方式：f"<2{lang_tag}>"
                     supervision.custom["st_text"] = f"<2{lang_tag}>" + supervision.custom["st_text"]
                     lang_ids.append(tgt_lang2id[lang_tag])
                 else:
-                    # 不使用目标语 token 时，仍可根据 lang_tag 生成 id（若你需要）
                     if lang_tag is None:
-                        # 如不需要 id，可改为 continue；此处默认给 0 兜底
                         lang_ids.append(0)
                     else:
-                        # 这里也先用归一化后的键去查，查不到就 0
                         lang_ids.append(tgt_lang2id.get(lang_tag, 0))
 
                 st_texts.append(supervision.custom["st_text"])
-
-    # 转为张量 [B]
     tgt_lang_ids = torch.tensor(lang_ids, dtype=torch.long)
     return st_texts, tgt_lang_ids
 
@@ -972,24 +885,9 @@ def asr_source_lang_tensor(
     *,
     strict: bool = True,
 ) -> torch.LongTensor:
-    """
-    从 batch 的 supervisions 中提取 ASR 源语标签 (SupervisionSegment.language)，
-    与有 text 的样本一一对齐，并映射为 torch.LongTensor(dtype=torch.long)。
-
-    参数：
-      supervisions: 你贴的那个 dict（含 'text', 'cut', ...）
-      srt_lang2id: 语言到整数ID的映射，比如 {"en": 1, "zh-cn": 2}
-      strict: True=未知语言报错；False=未知语言回退到 0
-
-    返回：
-      torch.LongTensor，shape [B]，与 supervisions['text'] 对齐
-    """
     tags: List[Optional[str]] = []
-
-    # 优先按 cut.supervisions[*].language 收集（与有 text 的条目对齐）
     cuts: Iterable[Any] = supervisions.get("cut", [])
     for cut in cuts:
-        # 兼容对象/字典两种 cut
         sups = getattr(cut, "supervisions", None)
         if sups is None and isinstance(cut, dict):
             sups = cut.get("supervisions", [])
@@ -997,7 +895,6 @@ def asr_source_lang_tensor(
             continue
 
         for sup in sups:
-            # 兼容对象/字典两种 supervision
             if isinstance(sup, dict):
                 text = sup.get("text")
                 lang = sup.get("language")
@@ -1006,7 +903,7 @@ def asr_source_lang_tensor(
                 lang = getattr(sup, "language", None)
 
             if text is None:
-                continue  # 只为有 text 的条目收集语言
+                continue  
 
             lang = _normalize_lang_tag(lang)
 
@@ -1014,12 +911,9 @@ def asr_source_lang_tensor(
                 raise KeyError("Missing supervision['language'] for an ASR sample.")
             tags.append(lang)
 
-    # （可选）对齐检查：与顶层 text 数量一致
     if "text" in supervisions and isinstance(supervisions["text"], list):
         assert len(tags) == len(supervisions["text"]), \
-            f"ASR语言数({len(tags)})与text数({len(supervisions['text'])})不一致"
-
-    # 映射为ID
+            f"The number of ASR languages ​​({len(tags)}) is inconsistent with the number of texts ({len(supervisions['text'])})."
     if strict:
         ids = []
         for t in tags:
@@ -1207,7 +1101,7 @@ def compute_loss(
                 pruned_scale = 1.0 if batch_idx_train >= warm_step else 0.1 + 0.9 * (batch_idx_train / warm_step)
                 return simple_scale, pruned_scale
 
-            s_asr_scale, p_asr_scale = _warm_scale(params.simple_loss_scale) # 初值默认simple_loss_scale 0.5
+            s_asr_scale, p_asr_scale = _warm_scale(params.simple_loss_scale)
             loss_asr += s_asr_scale * simple_asr + p_asr_scale * pruned_asr
             
             if params.enable_st:
@@ -1252,7 +1146,6 @@ def compute_loss(
     if params.enable_st:
         loss = params.task_weight_asr * loss_asr + params.task_weight_st * loss_st + moe_ent_loss
     else:
-        # 只训练 ASR + MoE 正则
         loss = params.task_weight_asr * loss_asr + moe_ent_loss
 
     assert loss.requires_grad == is_training
@@ -1316,7 +1209,6 @@ def compute_loss(
                     )
                 else:
                     logging.warning(
-                        "跳过 ASR MoE 统计：batch size 与语言 ID 数不一致 "
                         f"({mean_asr.size(0)} vs {stats_srt_lang_ids.numel()})"
                     )
         if params.enable_st and hasattr(base_model, "ast_moe_layer"):
@@ -1334,7 +1226,6 @@ def compute_loss(
                     )
                 else:
                     logging.warning(
-                        "跳过 ST MoE 统计：batch size 与语言 ID 数不一致 "
                         f"({mean_st.size(0)} vs {stats_tgt_lang_ids.numel()})"
                     )
         if not moe_batch_stats:
@@ -1440,7 +1331,7 @@ def train_one_epoch(
     rank: int = 0,
 ) -> None:
     model.train()
-    _reapply_freeze_asr(model) # 冻结ASR
+    _reapply_freeze_asr(model)
     tot_loss = MetricsTracker()
     saved_bad_model = False
     collect_moe_stats = bool(getattr(params, "dump_moe_routing_stats", False)) and rank == 0
@@ -1911,14 +1802,11 @@ def run(rank: int, world_size: int, args: argparse.Namespace) -> None:
         if not lang or not lang.strip():
             print(f"WARNING: Exclude cut {c.id}. Missing or empty lang field.", file=sys.stderr, flush=True)
             return False
-        # 下采样后的帧数估计
         T = ((c.num_frames - 7) // 2 + 1) // 2
 
-        # ASR token 数
         asr_tokens = sp_asr.encode(text, out_type=str)
         asr_len = len(asr_tokens)
 
-        # ST token 数
         st_tokens = sp_st.encode(st_text, out_type=str)
         st_len = len(st_tokens)
 
