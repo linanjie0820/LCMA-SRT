@@ -178,8 +178,6 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <th align="center">nl</th><th align="center">pl</th><th align="center">pt</th><th align="center">ro</th>
     </tr>
   </thead>
-
-  <tbody>
     <!-- de -->
     <tr>
       <th rowspan="3" align="center" valign="middle">de</th>
@@ -323,7 +321,6 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td align="center"><strong>13.64</strong></td><td align="center"><strong>13.29</strong></td><td align="center"><strong>13.51</strong></td><td align="center"><strong>13.46</strong></td>
       <td align="center"><strong>13.38</strong></td><td align="center"><strong>13.61</strong></td><td align="center"><strong>13.54</strong></td><td align="center"><strong>13.72</strong></td><td align="center">-</td>
     </tr>
-  </tbody>
 </table>
 
 
