@@ -81,22 +81,22 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
       <td><strong>20.0</strong></td><td><strong>20.5</strong></td><td><strong>10.7</strong></td><td><strong>23.9</strong></td><td><strong>17.6</strong></td><td><strong>20.5</strong></td>
     </tr>
     <tr>
-      <td>TGT-MoE→MoE</td>
+      <td>&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
       <td>16.42</td>
       <td>2.3</td><td>14.7</td><td>4.7</td><td>3.3</td><td>1.7</td><td>2.7</td><td>1.1</td><td>4.5</td><td>2.0</td><td>4.1</td>
     </tr>
     <tr>
-      <td>TGT-MoE→T-Bias</td>
+      <td>&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
       <td>15.84</td>
       <td>13.1</td><td>22.7</td><td>23.5</td><td>22.3</td><td>17.7</td><td>18.1</td><td>8.3</td><td>21.8</td><td>14.5</td><td>18.0</td>
     </tr>
     <tr>
-      <td>w/o TGT-MoE</td>
+      <td>&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
       <td>16.48</td>
       <td>2.0</td><td>12.8</td><td>5.9</td><td>3.9</td><td>1.6</td><td>3.0</td><td>1.3</td><td>5.0</td><td>2.2</td><td>4.2</td>
     </tr>
     <tr>
-      <td>w/o SRC-MoE</td>
+      <td>&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
       <td>16.11</td>
       <td>14.5</td><td>24.9</td><td>25.0</td><td>24.6</td><td>19.6</td><td>20.0</td><td>10.5</td><td>23.7</td><td>17.5</td><td>20.0</td>
     </tr>
@@ -132,22 +132,22 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
       <td><strong>0.656</strong></td><td><strong>0.613</strong></td><td><strong>0.616</strong></td><td><strong>0.693</strong></td><td><strong>0.678</strong></td><td><strong>0.651</strong></td>
     </tr>
     <tr>
-      <td>TGT-MoE→MoE</td>
+      <td>&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
       <td>85.23</td>
       <td>0.380</td><td>0.559</td><td>0.476</td><td>0.426</td><td>0.438</td><td>0.395</td><td>0.386</td><td>0.472</td><td>0.408</td><td>0.438</td>
     </tr>
     <tr>
-      <td>TGT-MoE→T-Bias</td>
+      <td>&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
       <td>0.78</td>
       <td>0.529</td><td>0.675</td><td>0.642</td><td>0.583</td><td>0.612</td><td>0.563</td><td>0.562</td><td>0.651</td><td>0.621</td><td>0.604</td>
     </tr>
     <tr>
-      <td>w/o TGT-MoE</td>
+      <td>&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
       <td>85.19</td>
       <td>0.376</td><td>0.545</td><td>0.480</td><td>0.427</td><td>0.434</td><td>0.398</td><td>0.387</td><td>0.473</td><td>0.407</td><td>0.436</td>
     </tr>
     <tr>
-      <td>w/o SRC-MoE</td>
+      <td>&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
       <td>0.81</td>
       <td>0.568</td><td>0.708</td><td>0.671</td><td>0.621</td><td>0.646</td><td>0.606</td><td>0.605</td><td>0.685</td><td>0.675</td><td>0.643</td>
     </tr>
