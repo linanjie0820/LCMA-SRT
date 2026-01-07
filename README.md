@@ -12,13 +12,44 @@ Please refer to this page to download the data: [Europarl-ST](https://www.mllp.u
 The model checkpoints are available for anonymous review on Figshare: checkpoints
 # Main Results
 ## Multilingual ASR Pretraining
-**WER (%) ↓**
-| Model     |   de |   en |   es |   fr |   it |   nl |   pl |   pt |   ro |  Avg |
-|:----------|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
-| CR-CTC    | 24.57| 18.59| 20.76| 19.24| 17.33| 36.75| 25.28| 19.82| 18.77| 22.35|
-|   + MoE     | 24.39| 18.41| 20.16| 18.61| 17.28| 36.83| 24.36| 19.70| 18.79| 22.06|
-|   + S-Bias  | 23.89| 17.60| 19.58| 17.41| 16.73| **34.72**| 23.63| 18.21| 17.97| 21.08|
-|   + SRC-MoE  | **23.34**| **17.45**| **19.41**| **17.34**| **16.27**| 35.20| **23.28**| **18.16**| **17.48**| **20.88**|
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Model</th>
+      <th colspan="10">WER (%) ↓</th>
+    </tr>
+    <tr>
+      <th>de</th><th>en</th><th>es</th><th>fr</th><th>it</th>
+      <th>nl</th><th>pl</th><th>pt</th><th>ro</th><th>Avg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CR-CTC</td>
+      <td>24.57</td><td>18.59</td><td>20.76</td><td>19.24</td><td>17.33</td>
+      <td>36.75</td><td>25.28</td><td>19.82</td><td>18.77</td><td>22.35</td>
+    </tr>
+    <tr>
+      <td>+ MoE</td>
+      <td>24.39</td><td>18.41</td><td>20.16</td><td>18.61</td><td>17.28</td>
+      <td>36.83</td><td>24.36</td><td>19.70</td><td>18.79</td><td>22.06</td>
+    </tr>
+    <tr>
+      <td>+ S-Bias</td>
+      <td>23.89</td><td>17.60</td><td>19.58</td><td>17.41</td><td>16.73</td>
+      <td><strong>34.72</strong></td><td>23.63</td><td>18.21</td><td>17.97</td><td>21.08</td>
+    </tr>
+    <tr>
+      <td>+ SRC-MoE</td>
+      <td><strong>23.34</strong></td><td><strong>17.45</strong></td><td><strong>19.41</strong></td>
+      <td><strong>17.34</strong></td><td><strong>16.27</strong></td><td>35.20</td>
+      <td><strong>23.28</strong></td><td><strong>18.16</strong></td><td><strong>17.48</strong></td>
+      <td><strong>20.88</strong></td>
+    </tr>
+  </tbody>
+</table>
+
 ## Many-to-Many Joint Training (Average)
 <table>
   <thead>
