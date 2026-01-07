@@ -1095,31 +1095,87 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
     <tr>
       <th rowspan="7">de</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>0.08</td><td>0.70</td><td>0.64</td><td>0.66</td><td>1.00</td><td>0.00</td><td>3.39</td><td>1.70</td>
+      <td>-</td>
+      <td><strong>0.08</strong></td>
+      <td>0.70</td>
+      <td>0.64</td>
+      <td><strong>0.66</strong></td>
+      <td>1.00</td>
+      <td><strong>0.00</strong></td>
+      <td><strong>3.39</strong></td>
+      <td><u>1.70</u></td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>-</td><td>56.60</td><td>87.83</td><td>90.14</td><td>94.98</td><td>77.09</td><td>83.11</td><td>83.75</td><td>82.55</td>
+      <td>-</td>
+      <td>56.60</td>
+      <td>87.83</td>
+      <td>90.14</td>
+      <td>94.98</td>
+      <td>77.09</td>
+      <td>83.11</td>
+      <td>83.75</td>
+      <td>82.55</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td>-</td><td><strong>0.38</strong></td><td><strong>0.49</strong></td><td><strong>0.43</strong></td><td><strong>0.58</strong></td><td><strong>0.84</strong></td><td><strong>0.73</strong></td><td><strong>2.38</strong></td><td><strong>1.79</strong></td>
+      <td>-</td>
+      <td>0.38</td>
+      <td><strong>0.49</strong></td>
+      <td><strong>0.43</strong></td>
+      <td><u>0.58</u></td>
+      <td><strong>0.84</strong></td>
+      <td>0.73</td>
+      <td><strong>2.38</strong></td>
+      <td>1.79</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
-      <td>-</td><td>44.09</td><td>91.70</td><td>93.43</td><td>96.22</td><td>87.51</td><td>88.57</td><td>86.63</td><td>84.42</td>
+      <td>-</td>
+      <td>44.09</td>
+      <td>91.70</td>
+      <td>93.43</td>
+      <td>96.22</td>
+      <td>87.51</td>
+      <td>88.57</td>
+      <td>86.63</td>
+      <td>84.42</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
-      <td>-</td><td>0.34</td><td>0.56</td><td>0.64</td><td>0.82</td><td>1.84</td><td>0.36</td><td>2.89</td><td>1.62</td>
+      <td>-</td>
+      <td><u>0.34</u></td>
+      <td><u>0.56</u></td>
+      <td><u>0.64</u></td>
+      <td>0.82</td>
+      <td><u>1.84</u></td>
+      <td><u>0.36</u></td>
+      <td><u>2.89</u></td>
+      <td><strong>1.62</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>-</td><td>54.96</td><td>87.83</td><td>91.79</td><td>97.04</td><td>83.22</td><td>80.86</td><td>83.02</td><td>83.12</td>
+      <td>-</td>
+      <td>54.96</td>
+      <td>87.83</td>
+      <td>91.79</td>
+      <td>97.04</td>
+      <td>83.22</td>
+      <td>80.86</td>
+      <td>83.02</td>
+      <td>83.12</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>-</td><td>0.38</td><td>0.84</td><td>0.86</td><td>1.48</td><td>0.92</td><td>0.58</td><td>3.10</td><td>1.62</td>
+      <td>-</td>
+      <td>0.38</td>
+      <td>0.84</td>
+      <td>0.86</td>
+      <td>1.48</td>
+      <td>0.92</td>
+      <td>0.58</td>
+      <td>3.10</td>
+      <td><strong>1.62</strong></td>
     </tr>
   </tbody>
 
@@ -1127,31 +1183,87 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
     <tr>
       <th rowspan="7">en</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>0.00</td><td>-</td><td>0.79</td><td>0.25</td><td>0.35</td><td>0.65</td><td>0.16</td><td>1.98</td><td>1.64</td>
+      <td><strong>0.00</strong></td>
+      <td>-</td>
+      <td>0.79</td>
+      <td><u>0.25</u></td>
+      <td>0.35</td>
+      <td>0.65</td>
+      <td><u>0.16</u></td>
+      <td><strong>1.98</strong></td>
+      <td>1.64</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>78.21</td><td>-</td><td>78.93</td><td>86.08</td><td>95.93</td><td>78.54</td><td>85.14</td><td>81.62</td><td>80.55</td>
+      <td>78.21</td>
+      <td>-</td>
+      <td>78.93</td>
+      <td>86.08</td>
+      <td>95.93</td>
+      <td>78.54</td>
+      <td>85.14</td>
+      <td>81.62</td>
+      <td>80.55</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td><strong>0.08</strong></td><td>-</td><td><strong>0.95</strong></td><td><strong>0.16</strong></td><td><strong>0.09</strong></td><td><strong>0.24</strong></td><td><strong>0.40</strong></td><td><strong>1.98</strong></td><td><strong>1.64</strong></td>
+      <td><strong>0.08</strong></td>
+      <td>-</td>
+      <td>0.95</td>
+      <td>0.16</td>
+      <td><strong>0.09</strong></td>
+      <td><strong>0.24</strong></td>
+      <td>0.40</td>
+      <td><strong>1.98</strong></td>
+      <td><u>1.64</u></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
-      <td>79.25</td><td>-</td><td>82.40</td><td>85.26</td><td>95.75</td><td>81.54</td><td>87.16</td><td>79.24</td><td>79.45</td>
+      <td>79.25</td>
+      <td>-</td>
+      <td>82.40</td>
+      <td>85.26</td>
+      <td>95.75</td>
+      <td>81.54</td>
+      <td>87.16</td>
+      <td>79.24</td>
+      <td>79.45</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
-      <td>0.32</td><td>-</td><td>0.71</td><td>0.25</td><td>0.27</td><td>0.49</td><td>0.32</td><td>2.38</td><td>1.28</td>
+      <td><u>0.32</u></td>
+      <td>-</td>
+      <td>0.71</td>
+      <td><u>0.25</u></td>
+      <td><u>0.27</u></td>
+      <td><u>0.49</u></td>
+      <td><u>0.32</u></td>
+      <td><u>2.38</u></td>
+      <td><strong>1.28</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>83.56</td><td>-</td><td>77.82</td><td>86.24</td><td>95.39</td><td>83.48</td><td>84.49</td><td>78.76</td><td>81.74</td>
+      <td>83.56</td>
+      <td>-</td>
+      <td>77.82</td>
+      <td>86.24</td>
+      <td>95.39</td>
+      <td>83.48</td>
+      <td>84.49</td>
+      <td>78.76</td>
+      <td>81.74</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>0.08</td><td>-</td><td>0.55</td><td><strong>0.08</strong></td><td>0.53</td><td>0.40</td><td>0.32</td><td>2.38</td><td>1.83</td>
+      <td><strong>0.08</strong></td>
+      <td>-</td>
+      <td><strong>0.55</strong></td>
+      <td><strong>0.08</strong></td>
+      <td>0.53</td>
+      <td><strong>0.40</strong></td>
+      <td><strong>0.32</strong></td>
+      <td><u>2.38</u></td>
+      <td>1.83</td>
     </tr>
   </tbody>
 
@@ -1159,31 +1271,87 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
     <tr>
       <th rowspan="7">es</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>0.18</td><td>0.22</td><td>-</td><td>0.18</td><td>0.46</td><td>1.01</td><td>0.09</td><td>1.19</td><td>0.88</td>
+      <td><strong>0.18</strong></td>
+      <td><strong>0.22</strong></td>
+      <td>-</td>
+      <td><strong>0.18</strong></td>
+      <td>0.46</td>
+      <td><u>1.01</u></td>
+      <td><u>0.09</u></td>
+      <td><strong>1.19</strong></td>
+      <td><strong>0.88</strong></td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>88.51</td><td>58.54</td><td>-</td><td>92.98</td><td>96.76</td><td>89.58</td><td>90.93</td><td>80.07</td><td>86.81</td>
+      <td>88.51</td>
+      <td>58.54</td>
+      <td>-</td>
+      <td>92.98</td>
+      <td>96.76</td>
+      <td>89.58</td>
+      <td>90.93</td>
+      <td>80.07</td>
+      <td>86.81</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td><strong>0.54</strong></td><td><strong>0.61</strong></td><td>-</td><td><strong>0.37</strong></td><td><strong>0.65</strong></td><td><strong>0.92</strong></td><td><strong>0.38</strong></td><td><strong>1.29</strong></td><td><strong>1.54</strong></td>
+      <td>0.54</td>
+      <td>0.61</td>
+      <td>-</td>
+      <td>0.37</td>
+      <td><u>0.65</u></td>
+      <td>0.92</td>
+      <td>0.38</td>
+      <td>1.29</td>
+      <td>1.54</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
-      <td>88.87</td><td>50.66</td><td>-</td><td>93.16</td><td>96.85</td><td>92.59</td><td>92.63</td><td>82.09</td><td>88.68</td>
+      <td>88.87</td>
+      <td>50.66</td>
+      <td>-</td>
+      <td>93.16</td>
+      <td>96.85</td>
+      <td>92.59</td>
+      <td>92.63</td>
+      <td>82.09</td>
+      <td>88.68</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
-      <td>0.36</td><td>0.61</td><td>-</td><td>0.28</td><td>0.37</td><td>1.28</td><td>0.19</td><td>1.47</td><td>1.10</td>
+      <td><u>0.36</u></td>
+      <td>0.61</td>
+      <td>-</td>
+      <td><u>0.28</u></td>
+      <td><strong>0.37</strong></td>
+      <td>1.28</td>
+      <td>0.19</td>
+      <td><u>1.47</u></td>
+      <td><u>1.10</u></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>91.56</td><td>55.95</td><td>-</td><td>92.79</td><td>97.59</td><td>91.58</td><td>87.43</td><td>76.19</td><td>85.71</td>
+      <td>91.56</td>
+      <td>55.95</td>
+      <td>-</td>
+      <td>92.79</td>
+      <td>97.59</td>
+      <td>91.58</td>
+      <td>87.43</td>
+      <td>76.19</td>
+      <td>85.71</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>0.27</td><td>0.50</td><td>-</td><td>0.55</td><td>0.74</td><td>0.82</td><td>0.47</td><td>1.47</td><td>1.43</td>
+      <td>0.27</td>
+      <td><u>0.50</u></td>
+      <td>-</td>
+      <td>0.55</td>
+      <td>0.74</td>
+      <td><strong>0.82</strong></td>
+      <td>0.47</td>
+      <td><u>1.47</u></td>
+      <td>1.43</td>
     </tr>
   </tbody>
 
@@ -1191,31 +1359,87 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
     <tr>
       <th rowspan="7">fr</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>0.00</td><td>0.11</td><td>0.55</td><td>-</td><td>0.00</td><td>0.26</td><td>0.18</td><td>1.55</td><td>1.16</td>
+      <td><strong>0.00</strong></td>
+      <td><strong>0.11</strong></td>
+      <td>0.55</td>
+      <td>-</td>
+      <td><strong>0.00</strong></td>
+      <td><strong>0.26</strong></td>
+      <td><u>0.18</u></td>
+      <td>1.55</td>
+      <td><strong>1.16</strong></td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>85.18</td><td>71.51</td><td>87.89</td><td>-</td><td>95.60</td><td>86.66</td><td>89.85</td><td>77.71</td><td>84.93</td>
+      <td>85.18</td>
+      <td>71.51</td>
+      <td>87.89</td>
+      <td>-</td>
+      <td>95.60</td>
+      <td>86.66</td>
+      <td>89.85</td>
+      <td>77.71</td>
+      <td>84.93</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td><strong>0.00</strong></td><td><strong>0.33</strong></td><td><strong>0.73</strong></td><td>-</td><td><strong>0.38</strong></td><td><strong>0.87</strong></td><td><strong>0.36</strong></td><td><strong>1.91</strong></td><td><strong>1.16</strong></td>
+      <td><strong>0.00</strong></td>
+      <td><u>0.33</u></td>
+      <td>0.73</td>
+      <td>-</td>
+      <td>0.38</td>
+      <td>0.87</td>
+      <td>0.36</td>
+      <td>1.91</td>
+      <td><strong>1.16</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
-      <td>88.27</td><td>57.97</td><td>90.88</td><td>-</td><td>96.84</td><td>90.66</td><td>90.82</td><td>81.88</td><td>85.76</td>
+      <td>88.27</td>
+      <td>57.97</td>
+      <td>90.88</td>
+      <td>-</td>
+      <td>96.84</td>
+      <td>90.66</td>
+      <td>90.82</td>
+      <td>81.88</td>
+      <td>85.76</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
-      <td>0.18</td><td>0.39</td><td>0.36</td><td>-</td><td>0.19</td><td>1.31</td><td>0.27</td><td>0.91</td><td>1.37</td>
+      <td><u>0.18</u></td>
+      <td>0.39</td>
+      <td><strong>0.36</strong></td>
+      <td>-</td>
+      <td><u>0.19</u></td>
+      <td>1.31</td>
+      <td><strong>0.27</strong></td>
+      <td><strong>0.91</strong></td>
+      <td>1.37</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>88.91</td><td>70.85</td><td>87.41</td><td>-</td><td>96.46</td><td>89.61</td><td>88.84</td><td>78.05</td><td>83.02</td>
+      <td>88.91</td>
+      <td>70.85</td>
+      <td>87.41</td>
+      <td>-</td>
+      <td>96.46</td>
+      <td>89.61</td>
+      <td>88.84</td>
+      <td>78.05</td>
+      <td>83.02</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>0.37</td><td>0.44</td><td>0.46</td><td>-</td><td>0.57</td><td>0.61</td><td>0.27</td><td>1.18</td><td>1.90</td>
+      <td>0.37</td>
+      <td>0.44</td>
+      <td><u>0.46</u></td>
+      <td>-</td>
+      <td>0.57</td>
+      <td><u>0.61</u></td>
+      <td><strong>0.27</strong></td>
+      <td><u>1.18</u></td>
+      <td>1.90</td>
     </tr>
   </tbody>
 
@@ -1223,31 +1447,87 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
     <tr>
       <th rowspan="7">it</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>0.11</td><td>0.00</td><td>0.57</td><td>0.23</td><td>-</td><td>0.36</td><td>0.25</td><td>2.20</td><td>0.54</td>
+      <td><u>0.11</u></td>
+      <td><strong>0.00</strong></td>
+      <td>0.57</td>
+      <td><u>0.23</u></td>
+      <td>-</td>
+      <td><strong>0.36</strong></td>
+      <td>0.25</td>
+      <td>2.20</td>
+      <td><strong>0.54</strong></td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>88.54</td><td>57.23</td><td>92.05</td><td>94.25</td><td>-</td><td>91.61</td><td>92.77</td><td>86.59</td><td>90.38</td>
+      <td>88.54</td>
+      <td>57.23</td>
+      <td>92.05</td>
+      <td>94.25</td>
+      <td>-</td>
+      <td>91.61</td>
+      <td>92.77</td>
+      <td>86.59</td>
+      <td>90.38</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td><strong>0.11</strong></td><td><strong>0.42</strong></td><td><strong>0.91</strong></td><td><strong>0.23</strong></td><td>-</td><td><strong>0.84</strong></td><td><strong>0.37</strong></td><td><strong>1.62</strong></td><td><strong>0.95</strong></td>
+      <td><u>0.11</u></td>
+      <td>0.42</td>
+      <td>0.91</td>
+      <td><u>0.23</u></td>
+      <td>-</td>
+      <td>0.84</td>
+      <td>0.37</td>
+      <td><u>1.62</u></td>
+      <td>0.95</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
-      <td>91.92</td><td>41.43</td><td>91.37</td><td>94.13</td><td>-</td><td>94.36</td><td>93.87</td><td>87.40</td><td>89.70</td>
+      <td>91.92</td>
+      <td>41.43</td>
+      <td>91.37</td>
+      <td>94.13</td>
+      <td>-</td>
+      <td>94.36</td>
+      <td>93.87</td>
+      <td>87.40</td>
+      <td>89.70</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
-      <td>0.44</td><td>0.12</td><td>0.45</td><td>0.45</td><td>-</td><td>0.72</td><td><strong>0.00</strong></td><td>1.73</td><td>1.49</td>
+      <td>0.44</td>
+      <td><u>0.12</u></td>
+      <td><strong>0.45</strong></td>
+      <td><strong>0.45</strong></td>
+      <td>-</td>
+      <td><strong>0.72</strong></td>
+      <td><strong>0.00</strong></td>
+      <td>1.73</td>
+      <td>1.49</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>92.36</td><td>47.80</td><td>91.37</td><td>95.94</td><td>-</td><td>93.04</td><td>91.18</td><td>87.51</td><td>89.30</td>
+      <td>92.36</td>
+      <td>47.80</td>
+      <td>91.37</td>
+      <td>95.94</td>
+      <td>-</td>
+      <td>93.04</td>
+      <td>91.18</td>
+      <td>87.51</td>
+      <td>89.30</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td><strong>0.00</strong></td><td>0.12</td><td>0.45</td><td>0.79</td><td>-</td><td>0.72</td><td>0.12</td><td>1.50</td><td><strong>0.81</strong></td>
+      <td><strong>0.00</strong></td>
+      <td><u>0.12</u></td>
+      <td><strong>0.45</strong></td>
+      <td>0.79</td>
+      <td>-</td>
+      <td><strong>0.72</strong></td>
+      <td><u>0.12</u></td>
+      <td><strong>1.50</strong></td>
+      <td><u>0.81</u></td>
     </tr>
   </tbody>
 
@@ -1255,31 +1535,87 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
     <tr>
       <th rowspan="7">nl</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>0.09</td><td>0.34</td><td>0.49</td><td>0.49</td><td>0.90</td><td>-</td><td>0.21</td><td>3.18</td><td>1.60</td>
+      <td><strong>0.09</strong></td>
+      <td><strong>0.34</strong></td>
+      <td><strong>0.49</strong></td>
+      <td><strong>0.49</strong></td>
+      <td>0.90</td>
+      <td>-</td>
+      <td><strong>0.21</strong></td>
+      <td>3.18</td>
+      <td><strong>1.60</strong></td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>78.25</td><td>56.62</td><td>88.85</td><td>89.02</td><td>93.71</td><td>-</td><td>86.96</td><td>82.91</td><td>81.98</td>
+      <td>78.25</td>
+      <td>56.62</td>
+      <td>88.85</td>
+      <td>89.02</td>
+      <td>93.71</td>
+      <td>-</td>
+      <td>86.96</td>
+      <td>82.91</td>
+      <td>81.98</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td><strong>0.19</strong></td><td><strong>0.86</strong></td><td><strong>1.19</strong></td><td><strong>0.79</strong></td><td><strong>0.79</strong></td><td>-</td><td><strong>0.62</strong></td><td><strong>1.80</strong></td><td><strong>1.94</strong></td>
+      <td><u>0.19</u></td>
+      <td>0.86</td>
+      <td>1.19</td>
+      <td>0.79</td>
+      <td><strong>0.79</strong></td>
+      <td>-</td>
+      <td><strong>0.62</strong></td>
+      <td><strong>1.80</strong></td>
+      <td><u>1.94</u></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
-      <td>82.38</td><td>35.99</td><td>94.86</td><td>92.08</td><td>95.38</td><td>-</td><td>89.00</td><td>86.94</td><td>86.99</td>
+      <td>82.38</td>
+      <td>35.99</td>
+      <td>94.86</td>
+      <td>92.08</td>
+      <td>95.38</td>
+      <td>-</td>
+      <td>89.00</td>
+      <td>86.94</td>
+      <td>86.99</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
-      <td>0.47</td><td>0.52</td><td>1.38</td><td>0.69</td><td>0.79</td><td>-</td><td>0.83</td><td>4.03</td><td>1.71</td>
+      <td>0.47</td>
+      <td><u>0.52</u></td>
+      <td><u>1.38</u></td>
+      <td><u>0.69</u></td>
+      <td><strong>0.79</strong></td>
+      <td>-</td>
+      <td>0.83</td>
+      <td>4.03</td>
+      <td><strong>1.71</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>83.47</td><td>49.05</td><td>88.42</td><td>89.30</td><td>95.72</td><td>-</td><td>81.93</td><td>84.82</td><td>82.65</td>
+      <td>83.47</td>
+      <td>49.05</td>
+      <td>88.42</td>
+      <td>89.30</td>
+      <td>95.72</td>
+      <td>-</td>
+      <td>81.93</td>
+      <td>84.82</td>
+      <td>82.65</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>0.19</td><td>0.63</td><td>0.99</td><td><strong>1.58</strong></td><td><strong>2.02</strong></td><td>-</td><td><strong>1.04</strong></td><td><strong>2.23</strong></td><td><strong>2.17</strong></td>
+      <td><u>0.19</u></td>
+      <td>0.63</td>
+      <td>0.99</td>
+      <td>1.58</td>
+      <td>2.02</td>
+      <td>-</td>
+      <td><u>1.04</u></td>
+      <td><u>2.23</u></td>
+      <td>2.17</td>
     </tr>
   </tbody>
 
@@ -1287,31 +1623,87 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
     <tr>
       <th rowspan="7">pl</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>0.00</td><td>0.22</td><td>0.72</td><td>0.16</td><td>0.42</td><td>1.80</td><td>-</td><td>2.08</td><td>1.72</td>
+      <td><strong>0.00</strong></td>
+      <td><strong>0.22</strong></td>
+      <td><strong>0.72</strong></td>
+      <td><strong>0.16</strong></td>
+      <td><strong>0.42</strong></td>
+      <td>1.80</td>
+      <td>-</td>
+      <td>2.08</td>
+      <td>1.72</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>82.54</td><td>60.55</td><td>89.70</td><td>91.34</td><td>96.01</td><td>86.68</td><td>-</td><td>83.45</td><td>87.29</td>
+      <td>82.54</td>
+      <td>60.55</td>
+      <td>89.70</td>
+      <td>91.34</td>
+      <td>96.01</td>
+      <td>86.68</td>
+      <td>-</td>
+      <td>83.45</td>
+      <td>87.29</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td><strong>0.00</strong></td><td><strong>0.40</strong></td><td><strong>0.80</strong></td><td><strong>0.48</strong></td><td><strong>0.85</strong></td><td><strong>1.14</strong></td><td>-</td><td><strong>1.60</strong></td><td><strong>1.01</strong></td>
+      <td><strong>0.00</strong></td>
+      <td>0.40</td>
+      <td>0.80</td>
+      <td>0.48</td>
+      <td>0.85</td>
+      <td><strong>1.14</strong></td>
+      <td>-</td>
+      <td><strong>1.60</strong></td>
+      <td><strong>1.01</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
-      <td>85.89</td><td>46.27</td><td>92.66</td><td>92.05</td><td>96.94</td><td>90.28</td><td>-</td><td>88.57</td><td>88.70</td>
+      <td>85.89</td>
+      <td>46.27</td>
+      <td>92.66</td>
+      <td>92.05</td>
+      <td>96.94</td>
+      <td>90.28</td>
+      <td>-</td>
+      <td>88.57</td>
+      <td>88.70</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
-      <td>0.39</td><td>0.49</td><td>1.04</td><td>0.32</td><td>0.51</td><td>1.47</td><td>-</td><td>1.44</td><td>1.31</td>
+      <td>0.39</td>
+      <td><u>0.49</u></td>
+      <td>1.04</td>
+      <td>0.32</td>
+      <td>0.51</td>
+      <td><u>1.47</u></td>
+      <td>-</td>
+      <td><u>1.44</u></td>
+      <td>1.31</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>86.52</td><td>64.23</td><td>89.31</td><td>91.49</td><td>97.28</td><td>89.13</td><td>-</td><td>82.57</td><td>86.28</td>
+      <td>86.52</td>
+      <td>64.23</td>
+      <td>89.31</td>
+      <td>91.49</td>
+      <td>97.28</td>
+      <td>89.13</td>
+      <td>-</td>
+      <td>82.57</td>
+      <td>86.28</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td><strong>0.00</strong></td><td>0.36</td><td><strong>0.40</strong></td><td><strong>0.79</strong></td><td><strong>0.85</strong></td><td><strong>1.39</strong></td><td>-</td><td>1.60</td><td>1.21</td>
+      <td><strong>0.00</strong></td>
+      <td><u>0.36</u></td>
+      <td><u>0.40</u></td>
+      <td><u>0.79</u></td>
+      <td><u>0.85</u></td>
+      <td>1.39</td>
+      <td>-</td>
+      <td><strong>1.60</strong></td>
+      <td><u>1.21</u></td>
     </tr>
   </tbody>
 
@@ -1319,31 +1711,87 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
     <tr>
       <th rowspan="7">pt</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>0.00</td><td>0.17</td><td>0.16</td><td>0.16</td><td>0.08</td><td>0.41</td><td>0.08</td><td>-</td><td>0.81</td>
+      <td><strong>0.00</strong></td>
+      <td><strong>0.17</strong></td>
+      <td><u>0.16</u></td>
+      <td><u>0.16</u></td>
+      <td><u>0.08</u></td>
+      <td><strong>0.41</strong></td>
+      <td><strong>0.08</strong></td>
+      <td>-</td>
+      <td><strong>0.81</strong></td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>88.36</td><td>65.79</td><td>86.39</td><td>91.99</td><td>97.51</td><td>90.31</td><td>90.80</td><td>-</td><td>87.09</td>
+      <td>88.36</td>
+      <td>65.79</td>
+      <td>86.39</td>
+      <td>91.99</td>
+      <td>97.51</td>
+      <td>90.31</td>
+      <td>90.80</td>
+      <td>-</td>
+      <td>87.09</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td><strong>0.16</strong></td><td><strong>0.39</strong></td><td><strong>0.08</strong></td><td><strong>0.24</strong></td><td><strong>0.08</strong></td><td><strong>0.81</strong></td><td><strong>0.50</strong></td><td>-</td><td><strong>1.17</strong></td>
+      <td>0.16</td>
+      <td><u>0.39</u></td>
+      <td><strong>0.08</strong></td>
+      <td><strong>0.24</strong></td>
+      <td><strong>0.08</strong></td>
+      <td><u>0.81</u></td>
+      <td>0.50</td>
+      <td>-</td>
+      <td>1.17</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
-      <td>90.32</td><td>40.07</td><td>92.60</td><td>94.50</td><td>97.68</td><td>94.79</td><td>92.56</td><td>-</td><td>91.43</td>
+      <td>90.32</td>
+      <td>40.07</td>
+      <td>92.60</td>
+      <td>94.50</td>
+      <td>97.68</td>
+      <td>94.79</td>
+      <td>92.56</td>
+      <td>-</td>
+      <td>91.43</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
-      <td>0.24</td><td>0.48</td><td>0.24</td><td>0.24</td><td><strong>0.00</strong></td><td>0.90</td><td>0.08</td><td>-</td><td>0.81</td>
+      <td><u>0.24</u></td>
+      <td>0.48</td>
+      <td><u>0.24</u></td>
+      <td><u>0.24</u></td>
+      <td><strong>0.00</strong></td>
+      <td>0.90</td>
+      <td><strong>0.08</strong></td>
+      <td>-</td>
+      <td><strong>0.81</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>91.50</td><td>54.86</td><td>85.19</td><td>92.93</td><td>98.76</td><td>93.65</td><td>90.22</td><td>-</td><td>89.89</td>
+      <td>91.50</td>
+      <td>54.86</td>
+      <td>85.19</td>
+      <td>92.93</td>
+      <td>98.76</td>
+      <td>93.65</td>
+      <td>90.22</td>
+      <td>-</td>
+      <td>89.89</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td><strong>0.00</strong></td><td>0.26</td><td><strong>0.08</strong></td><td>0.47</td><td>0.17</td><td><strong>0.49</strong></td><td>0.25</td><td>-</td><td>1.08</td>
+      <td><strong>0.00</strong></td>
+      <td>0.26</td>
+      <td><strong>0.08</strong></td>
+      <td>0.47</td>
+      <td>0.17</td>
+      <td><strong>0.49</strong></td>
+      <td>0.25</td>
+      <td>-</td>
+      <td>1.08</td>
     </tr>
   </tbody>
 
@@ -1351,31 +1799,87 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
     <tr>
       <th rowspan="7">ro</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>0.00</td><td>0.15</td><td>0.42</td><td>0.26</td><td>0.77</td><td>0.91</td><td>0.00</td><td>1.58</td><td>-</td>
+      <td><strong>0.00</strong></td>
+      <td><strong>0.15</strong></td>
+      <td><strong>0.42</strong></td>
+      <td><strong>0.26</strong></td>
+      <td>0.77</td>
+      <td>0.91</td>
+      <td><strong>0.00</strong></td>
+      <td><strong>1.58</strong></td>
+      <td>-</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>90.98</td><td>50.74</td><td>93.27</td><td>95.33</td><td>98.46</td><td>93.14</td><td>93.04</td><td>89.42</td><td>-</td>
+      <td>90.98</td>
+      <td>50.74</td>
+      <td>93.27</td>
+      <td>95.33</td>
+      <td>98.46</td>
+      <td>93.14</td>
+      <td>93.04</td>
+      <td>89.42</td>
+      <td>-</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td><strong>0.16</strong></td><td><strong>0.56</strong></td><td><strong>0.50</strong></td><td><strong>0.17</strong></td><td><strong>0.77</strong></td><td><strong>1.24</strong></td><td><strong>0.43</strong></td><td><strong>1.33</strong></td><td>-</td>
+      <td><u>0.16</u></td>
+      <td>0.56</td>
+      <td>0.50</td>
+      <td><strong>0.17</strong></td>
+      <td><u>0.77</u></td>
+      <td>1.24</td>
+      <td>0.43</td>
+      <td><strong>1.33</strong></td>
+      <td>-</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
-      <td>91.39</td><td>45.21</td><td>93.69</td><td>94.99</td><td>97.52</td><td>94.38</td><td>94.93</td><td>89.92</td><td>-</td>
+      <td>91.39</td>
+      <td>45.21</td>
+      <td>93.69</td>
+      <td>94.99</td>
+      <td>97.52</td>
+      <td>94.38</td>
+      <td>94.93</td>
+      <td>89.92</td>
+      <td>-</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
-      <td>0.08</td><td>0.31</td><td>0.42</td><td>0.17</td><td>0.34</td><td>0.83</td><td>0.17</td><td>2.00</td><td>-</td>
+      <td><u>0.08</u></td>
+      <td><strong>0.31</strong></td>
+      <td><strong>0.42</strong></td>
+      <td><strong>0.17</strong></td>
+      <td><strong>0.34</strong></td>
+      <td>0.83</td>
+      <td><u>0.17</u></td>
+      <td>2.00</td>
+      <td>-</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>92.61</td><td>65.55</td><td>87.96</td><td>94.64</td><td>98.80</td><td>92.81</td><td>91.92</td><td>86.75</td><td>-</td>
+      <td>92.61</td>
+      <td>65.55</td>
+      <td>87.96</td>
+      <td>94.64</td>
+      <td>98.80</td>
+      <td>92.81</td>
+      <td>91.92</td>
+      <td>86.75</td>
+      <td>-</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>0.16</td><td>0.31</td><td>0.58</td><td>0.26</td><td>1.03</td><td><strong>0.41</strong></td><td>0.60</td><td>2.00</td><td>-</td>
+      <td><u>0.16</u></td>
+      <td><strong>0.31</strong></td>
+      <td>0.58</td>
+      <td><u>0.26</u></td>
+      <td>1.03</td>
+      <td><strong>0.41</strong></td>
+      <td>0.60</td>
+      <td>2.00</td>
+      <td>-</td>
     </tr>
   </tbody>
 </table>
