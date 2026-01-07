@@ -197,7 +197,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
 
   <tbody>
     <tr>
-      <th rowspan="3">de</th>
+      <th rowspan="3">en</th>
       <td align="left">HENT-SRT-M20&times;9</td>
       <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
     </tr>
@@ -211,7 +211,121 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
   </tbody>
-  
+
+  <tbody>
+    <tr>
+      <th rowspan="3">es</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="3">fr</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="3">it</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <th rowspan="3">nl</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <th rowspan="3">pl</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <th rowspan="3">pt</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <th rowspan="3">ro</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+  </tbody>
 </table>
 
 ### HENT-SRT(Many-to-One)
