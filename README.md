@@ -167,17 +167,6 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
 ## Many-to-Many Joint Training (All directions)
 
 <table>
-  <thead>
-    <tr>
-      <th rowspan="2" align="center" valign="middle">SRC/TGT</th>
-      <th rowspan="2" align="left" valign="middle">Model</th>
-      <th colspan="9" align="center" valign="middle">WER (%) &#8595;</th>
-    </tr>
-    <tr>
-      <th align="center">de</th><th align="center">en</th><th align="center">es</th><th align="center">fr</th><th align="center">it</th>
-      <th align="center">nl</th><th align="center">pl</th><th align="center">pt</th><th align="center">ro</th>
-    </tr>
-  </thead>
     <!-- de -->
     <tr>
       <th rowspan="3" align="center" valign="middle">de</th>
