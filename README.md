@@ -51,38 +51,9 @@ We evaluate ASR with word error rate (WER). For speech translation, we report BL
       <td><strong>17.34</strong></td><td><strong>16.27</strong></td><td>35.20</td>
       <td><strong>23.28</strong></td><td><strong>18.16</strong></td><td><strong>17.48</strong></td>
       <td><strong>20.88</strong></td>
-    </tr>
-
-    <tr>
-      <td>CR-CTC</td>
-      <td>24.57</td><td>18.59</td><td>20.76</td><td>19.24</td><td>17.33</td>
-      <td>36.75</td><td>25.28</td><td>19.82</td><td>18.77</td><td>22.35</td>
-    </tr>
-    <tr>
-      <td>&nbsp;&nbsp;&nbsp;+ MoE</td>
-      <td>24.39</td><td>18.41</td><td>20.16</td><td>18.61</td><td>17.28</td>
-      <td>36.83</td><td>24.36</td><td>19.70</td><td>18.79</td><td>22.06</td>
-    </tr>
-    <tr>
-      <td>&nbsp;&nbsp;&nbsp;+ S-Bias</td>
-      <td>23.89</td><td>17.60</td><td>19.58</td><td>17.41</td><td>16.73</td>
-      <td><strong>34.72</strong></td><td>23.63</td><td>18.21</td><td>17.97</td><td>21.08</td>
-    </tr>
-    <tr>
-      <td>&nbsp;&nbsp;&nbsp;+ SRC-MoE</td>
-      <td><strong>23.34</strong></td><td><strong>17.45</strong></td><td><strong>19.41</strong></td>
-      <td><strong>17.34</strong></td><td><strong>16.27</strong></td><td>35.20</td>
-      <td><strong>23.28</strong></td><td><strong>18.16</strong></td><td><strong>17.48</strong></td>
-      <td><strong>20.88</strong></td>
-    </tr>
-    
+    </tr>    
   </tbody>
 </table>
-
-
-
-
-
 
 Multilingual ASR results on Europarl-ST. WER is reported per source language, and Avg denotes the overall average. We report the CR-CTC baseline and its variants with an unconditioned MoE adapter (+MoE), a source-identity bias (+S-Bias), and the proposed source-conditioned MoE adapter inserted after the ASR encoder (+SRC-MoE).
 
@@ -223,6 +194,24 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
   </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="3">de</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+  </tbody>
+  
 </table>
 
 ### HENT-SRT(Many-to-One)
