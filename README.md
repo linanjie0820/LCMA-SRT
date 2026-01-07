@@ -31,17 +31,17 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
       <td>36.75</td><td>25.28</td><td>19.82</td><td>18.77</td><td>22.35</td>
     </tr>
     <tr>
-      <td>+ MoE</td>
+      <td>&nbsp;&nbsp;&nbsp;+ MoE</td>
       <td>24.39</td><td>18.41</td><td>20.16</td><td>18.61</td><td>17.28</td>
       <td>36.83</td><td>24.36</td><td>19.70</td><td>18.79</td><td>22.06</td>
     </tr>
     <tr>
-      <td>+ S-Bias</td>
+      <td>&nbsp;&nbsp;&nbsp;+ S-Bias</td>
       <td>23.89</td><td>17.60</td><td>19.58</td><td>17.41</td><td>16.73</td>
       <td><strong>34.72</strong></td><td>23.63</td><td>18.21</td><td>17.97</td><td>21.08</td>
     </tr>
     <tr>
-      <td>+ SRC-MoE</td>
+      <td>&nbsp;&nbsp;&nbsp;+ SRC-MoE</td>
       <td><strong>23.34</strong></td><td><strong>17.45</strong></td><td><strong>19.41</strong></td>
       <td><strong>17.34</strong></td><td><strong>16.27</strong></td><td>35.20</td>
       <td><strong>23.28</strong></td><td><strong>18.16</strong></td><td><strong>17.48</strong></td>
@@ -49,6 +49,7 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
     </tr>
   </tbody>
 </table>
+
 
 ## Many-to-Many Joint Training (Average)
 <table>
