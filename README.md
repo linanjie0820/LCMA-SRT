@@ -104,6 +104,8 @@ Multilingual ASR results on Europarl-ST. WER is reported per source language, an
   </tbody>
 </table>
 
+Joint ASR and ST results on Europarl-ST. WER is averaged over all 72 translation directions. BLEU is averaged over directions grouped by their target language, and Avg denotes the overall average across all directions. We compare HENT-SRT-M2O×9 and HENT-SRT-M2M against LCMA-SRT and ablations that replace TGT-MoE with an unconditioned MoE (TGT-MoE→MoE) or a target-identity bias (TGT-MoE→T-Bias), or remove TGT-MoE / SRC-MoE (w/o TGT-MoE, w/o SRC-MoE).
+
 <table>
   <thead>
     <tr>
@@ -155,6 +157,7 @@ Multilingual ASR results on Europarl-ST. WER is reported per source language, an
   </tbody>
 </table>
 
+Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation directions. COMET is averaged over directions grouped by their target language, and Avg denotes the overall average across all directions. We compare HENT-SRT-M2O×9 and HENT-SRT-M2M against LCMA-SRT and ablations that replace TGT-MoE with an unconditioned MoE (TGT-MoE→MoE) or a target-identity bias (TGT-MoE→T-Bias), or remove TGT-MoE / SRC-MoE (w/o TGT-MoE, w/o SRC-MoE).
 
 ## Many-to-Many Joint Training (All directions)
 ### HENT-SRT(Many-to-One)
