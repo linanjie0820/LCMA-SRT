@@ -166,10 +166,329 @@ Joint ASR and ST results on Europarl-ST. WER is averaged over all 72 translation
 Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation directions. COMET is averaged over directions grouped by their target language, and Avg denotes the overall average across all directions. We compare HENT-SRT-M2O×9 and HENT-SRT-M2M against LCMA-SRT and ablations that replace TGT-MoE with an unconditioned MoE (TGT-MoE→MoE) or a target-identity bias (TGT-MoE→T-Bias), or remove TGT-MoE / SRC-MoE (w/o TGT-MoE, w/o SRC-MoE).
 
 ## Many-to-Many Joint Training (All direction）
+
+
 <table>
   <thead>
     <tr>
-      <th rowspan="2">SRC/TGT</th>
+      <th rowspan="2">SRC\TGT</th>
+      <th rowspan="2" align="left">Model</th>
+      <th colspan="9">WER (%) &#8595;</th>
+    </tr>
+    <tr>
+      <th>de</th><th>en</th><th>es</th><th>fr</th><th>it</th><th>nl</th><th>pl</th><th>pt</th><th>ro</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">de</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td><td>18.23</td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td>17.99</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>-</td><td>18.83</td><td>18.76</td><td>18.75</td><td>18.92</td><td>18.74</td><td>18.61</td><td>18.81</td><td>18.85</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>-</td><td>18.13</td><td>17.88</td><td>17.86</td><td><strong>18.16</strong></td><td><strong>17.92</strong></td><td>17.80</td><td><strong>17.93</strong></td><td><strong>17.97</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td>18.83</td><td>18.59</td><td>18.62</td><td>18.95</td><td>18.60</td><td>18.44</td><td>18.57</td><td>18.78</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td>18.66</td><td>18.35</td><td>18.33</td><td>18.65</td><td>18.41</td><td>18.30</td><td>18.51</td><td>18.50</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">en</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>16.42</td><td>-</td><td>17.32</td><td>17.56</td><td>17.08</td><td>17.45</td><td>17.29</td><td>17.18</td><td>17.21</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>13.92</td><td>-</td><td>13.94</td><td>14.02</td><td>13.79</td><td>13.84</td><td>13.99</td><td>13.90</td><td>13.53</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>12.94</strong></td><td>-</td><td><strong>12.93</strong></td><td><strong>13.02</strong></td><td><strong>12.84</strong></td><td><strong>12.87</strong></td><td><strong>12.92</strong></td><td><strong>12.97</strong></td><td><strong>12.64</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>13.28</td><td>-</td><td>13.27</td><td>13.33</td><td>13.14</td><td>13.18</td><td>13.31</td><td>13.34</td><td>12.88</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>13.26</td><td>-</td><td>13.25</td><td>13.35</td><td>13.05</td><td>13.16</td><td>13.26</td><td>13.25</td><td>12.94</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>13.41</td><td>-</td><td>13.38</td><td>13.45</td><td>13.26</td><td>13.31</td><td>13.43</td><td>13.39</td><td>13.04</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>13.50</td><td>-</td><td>13.49</td><td>13.61</td><td>13.46</td><td>13.39</td><td>13.53</td><td>13.48</td><td>13.13</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">es</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>21.29</td><td>17.77</td><td>-</td><td>22.25</td><td>22.83</td><td>22.68</td><td>21.93</td><td>22.82</td><td>22.66</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>15.96</td><td>15.80</td><td>-</td><td>15.91</td><td>15.69</td><td>15.97</td><td>15.85</td><td>15.89</td><td>15.75</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>15.30</td><td>15.14</td><td>-</td><td>15.27</td><td><strong>15.02</strong></td><td>15.31</td><td>15.26</td><td>15.25</td><td>15.14</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>15.61</td><td>15.51</td><td>-</td><td>15.65</td><td>15.41</td><td>15.60</td><td>15.56</td><td>15.52</td><td>15.57</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td><strong>15.19</strong></td><td><strong>15.13</strong></td><td>-</td><td><strong>15.21</strong></td><td>15.03</td><td><strong>15.21</strong></td><td><strong>15.14</strong></td><td><strong>15.11</strong></td><td><strong>14.89</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>15.96</td><td>15.81</td><td>-</td><td>15.97</td><td>15.74</td><td>15.99</td><td>15.89</td><td>15.90</td><td>15.82</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>15.46</td><td>15.22</td><td>-</td><td>15.41</td><td>15.16</td><td>15.46</td><td>15.34</td><td>15.35</td><td>15.11</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">fr</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>19.37</td><td>16.07</td><td>19.82</td><td>-</td><td>20.41</td><td>19.30</td><td>19.45</td><td>19.86</td><td>20.80</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>13.40</td><td>13.38</td><td>13.28</td><td>-</td><td>13.42</td><td>13.36</td><td>13.39</td><td>13.38</td><td>13.37</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>12.58</td><td>12.51</td><td>12.53</td><td>-</td><td>12.51</td><td>12.50</td><td>12.56</td><td>12.55</td><td>12.65</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>13.15</td><td>13.10</td><td>13.02</td><td>-</td><td>13.08</td><td>12.99</td><td>13.15</td><td>13.16</td><td>13.27</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td><strong>12.53</strong></td><td><strong>12.49</strong></td><td><strong>12.37</strong></td><td>-</td><td><strong>12.47</strong></td><td><strong>12.45</strong></td><td><strong>12.48</strong></td><td><strong>12.52</strong></td><td><strong>12.51</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>12.75</td><td>12.77</td><td>12.62</td><td>-</td><td>12.70</td><td>12.67</td><td>12.69</td><td>12.65</td><td>12.78</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>12.58</td><td>12.64</td><td>12.49</td><td>-</td><td>12.55</td><td>12.65</td><td>12.56</td><td>12.64</td><td>12.74</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">it</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>18.18</td><td>15.05</td><td>19.19</td><td>19.32</td><td>-</td><td>19.06</td><td>18.60</td><td>19.00</td><td>19.91</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>13.10</td><td>13.19</td><td>13.13</td><td>13.24</td><td>-</td><td>13.17</td><td>12.98</td><td>13.18</td><td>13.27</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>12.50</strong></td><td><strong>12.41</strong></td><td><strong>12.52</strong></td><td><strong>12.63</strong></td><td>-</td><td><strong>12.59</strong></td><td><strong>12.42</strong></td><td><strong>12.62</strong></td><td><strong>12.66</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>13.00</td><td>12.92</td><td>13.03</td><td>13.04</td><td>-</td><td>13.05</td><td>12.89</td><td>13.11</td><td>13.27</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>12.67</td><td>12.63</td><td>12.77</td><td>12.80</td><td>-</td><td>12.74</td><td>12.67</td><td>12.84</td><td>12.95</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>12.91</td><td>12.91</td><td>12.97</td><td>13.03</td><td>-</td><td>12.97</td><td>12.85</td><td>13.13</td><td>13.08</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>12.92</td><td>12.90</td><td>12.96</td><td>13.07</td><td>-</td><td>13.07</td><td>12.84</td><td>13.12</td><td>13.13</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">nl</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>38.99</td><td>32.95</td><td>38.85</td><td>38.85</td><td>39.52</td><td>-</td><td>38.99</td><td>39.32</td><td>39.26</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>28.59</td><td>28.65</td><td>28.73</td><td>28.46</td><td>28.62</td><td>-</td><td>28.46</td><td>28.46</td><td>28.47</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>27.01</strong></td><td><strong>27.23</strong></td><td><strong>26.89</strong></td><td><strong>26.91</strong></td><td><strong>27.20</strong></td><td>-</td><td><strong>26.93</strong></td><td><strong>27.07</strong></td><td><strong>26.82</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>28.47</td><td>28.60</td><td>28.57</td><td>28.38</td><td>28.58</td><td>-</td><td>28.34</td><td>28.47</td><td>28.34</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>27.33</td><td>27.39</td><td>27.28</td><td>27.17</td><td>27.57</td><td>-</td><td>27.32</td><td>27.29</td><td>27.26</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>28.71</td><td>28.80</td><td>28.57</td><td>28.56</td><td>28.75</td><td>-</td><td>28.61</td><td>28.52</td><td>28.48</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>27.85</td><td>28.02</td><td>27.74</td><td>27.69</td><td>27.94</td><td>-</td><td>27.65</td><td>27.77</td><td>27.55</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">pl</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>25.89</td><td>22.01</td><td>26.33</td><td>27.19</td><td>25.99</td><td>26.47</td><td>-</td><td>27.13</td><td>27.36</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>18.26</td><td>18.27</td><td>18.14</td><td>18.21</td><td>17.87</td><td>18.27</td><td>-</td><td>18.29</td><td>18.00</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>17.54</strong></td><td>17.39</td><td><strong>17.32</strong></td><td><strong>17.36</strong></td><td><strong>17.01</strong></td><td>17.43</td><td>-</td><td>17.57</td><td><strong>17.11</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>18.10</td><td>17.96</td><td>17.97</td><td>18.07</td><td>17.47</td><td>18.01</td><td>-</td><td>18.14</td><td>17.67</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>17.56</td><td><strong>17.32</strong></td><td>17.42</td><td>17.45</td><td>17.06</td><td><strong>17.41</strong></td><td>-</td><td><strong>17.50</strong></td><td>17.37</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>18.30</td><td>18.14</td><td>18.02</td><td>18.18</td><td>17.85</td><td>18.17</td><td>-</td><td>18.24</td><td>17.92</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>17.88</td><td>17.55</td><td>17.76</td><td>17.79</td><td>17.57</td><td>17.79</td><td>-</td><td>18.00</td><td>17.70</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">pt</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>19.90</td><td>16.27</td><td>21.74</td><td>20.82</td><td>20.77</td><td>20.99</td><td>20.48</td><td>-</td><td>20.53</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>13.60</td><td>13.59</td><td>13.52</td><td>13.59</td><td>13.38</td><td>13.58</td><td>13.57</td><td>-</td><td>13.34</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>12.37</strong></td><td><strong>12.72</strong></td><td><strong>12.28</strong></td><td><strong>12.37</strong></td><td><strong>12.08</strong></td><td><strong>12.38</strong></td><td><strong>12.40</strong></td><td>-</td><td><strong>12.19</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>13.15</td><td>13.39</td><td>13.10</td><td>13.18</td><td>12.96</td><td>13.16</td><td>13.12</td><td>-</td><td>12.91</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>12.53</td><td><strong>12.72</strong></td><td>12.50</td><td>12.55</td><td>12.30</td><td>12.52</td><td>12.57</td><td>-</td><td>12.30</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>13.12</td><td>13.29</td><td>13.01</td><td>13.12</td><td>12.95</td><td>13.09</td><td>13.06</td><td>-</td><td>12.82</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>12.75</td><td>12.86</td><td>12.63</td><td>12.75</td><td>12.49</td><td>12.77</td><td>12.67</td><td>-</td><td>12.48</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">ro</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>22.32</td><td>15.85</td><td>21.87</td><td>22.04</td><td>23.97</td><td>22.88</td><td>23.63</td><td>22.82</td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>14.59</td><td>14.20</td><td>14.52</td><td>14.42</td><td>14.17</td><td>14.59</td><td>14.49</td><td>14.65</td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>13.64</strong></td><td><strong>13.29</strong></td><td><strong>13.51</strong></td><td><strong>13.46</strong></td><td><strong>13.38</strong></td><td><strong>13.61</strong></td><td><strong>13.54</strong></td><td><strong>13.72</strong></td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>14.64</td><td>14.34</td><td>14.54</td><td>14.40</td><td>14.36</td><td>14.62</td><td>14.56</td><td>14.67</td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>13.99</td><td>13.63</td><td>13.93</td><td>13.82</td><td>13.62</td><td>13.98</td><td>13.88</td><td>14.01</td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>15.04</td><td>14.96</td><td>14.91</td><td>14.92</td><td>14.77</td><td>15.05</td><td>14.99</td><td>15.11</td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>14.09</td><td>13.74</td><td>13.97</td><td>13.88</td><td>13.73</td><td>14.05</td><td>13.91</td><td>14.13</td><td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">SRC\TGT</th>
       <th rowspan="2" align="left">Model</th>
       <th colspan="9">WER (%) &#8595;</th>
     </tr>
