@@ -168,223 +168,166 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
 
 
 
-<style>
-  table.wer {
-    border-collapse: collapse;
-    font-family: "Times New Roman", serif;
-    font-size: 16px;
-  }
-  table.wer th, table.wer td {
-    border: 1px solid #333;
-    padding: 3px 8px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-  }
-  table.wer th.model, table.wer td.model {
-    text-align: left;
-    padding-left: 10px;
-  }
-  table.wer th.src {
-    width: 38px;
-    font-weight: bold;
-  }
-
-  /* 斜线表头（SRC/TGT） */
-  th.diag {
-    position: relative;
-    min-width: 70px;
-    height: 46px;
-    padding: 0;
-  }
-  th.diag::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom right,
-      transparent 49%,
-      #333 50%,
-      #333 51%,
-      transparent 52%
-    );
-    pointer-events: none;
-  }
-  th.diag .tgt {
-    position: absolute;
-    top: 4px;
-    right: 8px;
-    font-weight: bold;
-  }
-  th.diag .src {
-    position: absolute;
-    bottom: 4px;
-    left: 8px;
-    font-weight: bold;
-  }
-</style>
-
-<table class="wer">
+<table>
   <thead>
     <tr>
-      <th class="diag" rowspan="2">
-        <span class="tgt">TGT</span>
-        <span class="src">SRC</span>
-      </th>
-      <th class="model" rowspan="2">Model</th>
-      <th colspan="9">WER (%)&#8595;</th>
+      <th rowspan="2" align="center" valign="middle">SRC/TGT</th>
+      <th rowspan="2" align="left" valign="middle">Model</th>
+      <th colspan="9" align="center" valign="middle">WER (%) &#8595;</th>
     </tr>
     <tr>
-      <th>de</th><th>en</th><th>es</th><th>fr</th><th>it</th><th>nl</th><th>pl</th><th>pt</th><th>ro</th>
+      <th align="center">de</th><th align="center">en</th><th align="center">es</th><th align="center">fr</th><th align="center">it</th>
+      <th align="center">nl</th><th align="center">pl</th><th align="center">pt</th><th align="center">ro</th>
     </tr>
   </thead>
 
   <tbody>
     <!-- de -->
     <tr>
-      <th class="src" rowspan="3">de</th>
-      <td class="model">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+      <th rowspan="3" align="center" valign="middle">de</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td align="center">-</td><td align="center">21.80</td><td align="center">26.64</td><td align="center">27.12</td><td align="center">27.44</td><td align="center">26.43</td><td align="center">26.51</td><td align="center">26.51</td><td align="center">26.62</td>
     </tr>
     <tr>
-      <td class="model">HENT-SRT-M2M</td>
-      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+      <td align="left">HENT-SRT-M2M</td>
+      <td align="center">-</td><td align="center">19.09</td><td align="center">18.77</td><td align="center">18.82</td><td align="center">19.09</td><td align="center">18.86</td><td align="center">18.79</td><td align="center">18.99</td><td align="center">18.86</td>
     </tr>
     <tr>
-      <td class="model">LCMA-SRT</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td align="left">LCMA-SRT</td>
+      <td align="center">-</td><td align="center"><strong>18.01</strong></td><td align="center"><strong>17.84</strong></td><td align="center"><strong>17.85</strong></td>
+      <td align="center"><strong>18.23</strong></td><td align="center"><strong>17.92</strong></td><td align="center"><strong>17.75</strong></td><td align="center"><strong>17.93</strong></td><td align="center"><strong>17.99</strong></td>
     </tr>
 
     <!-- en -->
     <tr>
-      <th class="src" rowspan="3">en</th>
-      <td class="model">HENT-SRT-M20&times;9</td>
-      <td>16.42</td><td>-</td><td>17.32</td><td>17.56</td><td>17.08</td><td>17.45</td><td>17.29</td><td>17.18</td><td>17.21</td>
+      <th rowspan="3" align="center" valign="middle">en</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td align="center">16.42</td><td align="center">-</td><td align="center">17.32</td><td align="center">17.56</td><td align="center">17.08</td><td align="center">17.45</td><td align="center">17.29</td><td align="center">17.18</td><td align="center">17.21</td>
     </tr>
     <tr>
-      <td class="model">HENT-SRT-M2M</td>
-      <td>13.92</td><td>-</td><td>13.94</td><td>14.02</td><td>13.79</td><td>13.84</td><td>13.99</td><td>13.90</td><td>13.53</td>
+      <td align="left">HENT-SRT-M2M</td>
+      <td align="center">13.92</td><td align="center">-</td><td align="center">13.94</td><td align="center">14.02</td><td align="center">13.79</td><td align="center">13.84</td><td align="center">13.99</td><td align="center">13.90</td><td align="center">13.53</td>
     </tr>
     <tr>
-      <td class="model">LCMA-SRT</td>
-      <td><strong>12.94</strong></td><td>-</td><td><strong>12.93</strong></td><td><strong>13.02</strong></td>
-      <td><strong>12.84</strong></td><td><strong>12.87</strong></td><td><strong>12.92</strong></td><td><strong>12.97</strong></td><td><strong>12.64</strong></td>
+      <td align="left">LCMA-SRT</td>
+      <td align="center"><strong>12.94</strong></td><td align="center">-</td><td align="center"><strong>12.93</strong></td><td align="center"><strong>13.02</strong></td>
+      <td align="center"><strong>12.84</strong></td><td align="center"><strong>12.87</strong></td><td align="center"><strong>12.92</strong></td><td align="center"><strong>12.97</strong></td><td align="center"><strong>12.64</strong></td>
     </tr>
 
     <!-- es -->
     <tr>
-      <th class="src" rowspan="3">es</th>
-      <td class="model">HENT-SRT-M20&times;9</td>
-      <td>21.29</td><td>17.77</td><td>-</td><td>22.25</td><td>22.83</td><td>22.68</td><td>21.93</td><td>22.82</td><td>22.66</td>
+      <th rowspan="3" align="center" valign="middle">es</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td align="center">21.29</td><td align="center">17.77</td><td align="center">-</td><td align="center">22.25</td><td align="center">22.83</td><td align="center">22.68</td><td align="center">21.93</td><td align="center">22.82</td><td align="center">22.66</td>
     </tr>
     <tr>
-      <td class="model">HENT-SRT-M2M</td>
-      <td>15.96</td><td>15.80</td><td>-</td><td>15.91</td><td>15.69</td><td>15.97</td><td>15.85</td><td>15.89</td><td>15.75</td>
+      <td align="left">HENT-SRT-M2M</td>
+      <td align="center">15.96</td><td align="center">15.80</td><td align="center">-</td><td align="center">15.91</td><td align="center">15.69</td><td align="center">15.97</td><td align="center">15.85</td><td align="center">15.89</td><td align="center">15.75</td>
     </tr>
     <tr>
-      <td class="model">LCMA-SRT</td>
-      <td><strong>15.30</strong></td><td><strong>15.14</strong></td><td>-</td><td><strong>15.27</strong></td>
-      <td><strong>15.02</strong></td><td><strong>15.31</strong></td><td><strong>15.26</strong></td><td><strong>15.25</strong></td><td><strong>15.14</strong></td>
+      <td align="left">LCMA-SRT</td>
+      <td align="center"><strong>15.30</strong></td><td align="center"><strong>15.14</strong></td><td align="center">-</td><td align="center"><strong>15.27</strong></td>
+      <td align="center"><strong>15.02</strong></td><td align="center"><strong>15.31</strong></td><td align="center"><strong>15.26</strong></td><td align="center"><strong>15.25</strong></td><td align="center"><strong>15.14</strong></td>
     </tr>
 
     <!-- fr -->
     <tr>
-      <th class="src" rowspan="3">fr</th>
-      <td class="model">HENT-SRT-M20&times;9</td>
-      <td>19.37</td><td>16.07</td><td>19.82</td><td>-</td><td>20.41</td><td>19.30</td><td>19.45</td><td>19.86</td><td>20.80</td>
+      <th rowspan="3" align="center" valign="middle">fr</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td align="center">19.37</td><td align="center">16.07</td><td align="center">19.82</td><td align="center">-</td><td align="center">20.41</td><td align="center">19.30</td><td align="center">19.45</td><td align="center">19.86</td><td align="center">20.80</td>
     </tr>
     <tr>
-      <td class="model">HENT-SRT-M2M</td>
-      <td>13.40</td><td>13.38</td><td>13.28</td><td>-</td><td>13.42</td><td>13.36</td><td>13.39</td><td>13.38</td><td>13.37</td>
+      <td align="left">HENT-SRT-M2M</td>
+      <td align="center">13.40</td><td align="center">13.38</td><td align="center">13.28</td><td align="center">-</td><td align="center">13.42</td><td align="center">13.36</td><td align="center">13.39</td><td align="center">13.38</td><td align="center">13.37</td>
     </tr>
     <tr>
-      <td class="model">LCMA-SRT</td>
-      <td><strong>12.58</strong></td><td><strong>12.51</strong></td><td><strong>12.53</strong></td><td>-</td>
-      <td><strong>12.51</strong></td><td><strong>12.50</strong></td><td><strong>12.56</strong></td><td><strong>12.55</strong></td><td><strong>12.65</strong></td>
+      <td align="left">LCMA-SRT</td>
+      <td align="center"><strong>12.58</strong></td><td align="center"><strong>12.51</strong></td><td align="center"><strong>12.53</strong></td><td align="center">-</td>
+      <td align="center"><strong>12.51</strong></td><td align="center"><strong>12.50</strong></td><td align="center"><strong>12.56</strong></td><td align="center"><strong>12.55</strong></td><td align="center"><strong>12.65</strong></td>
     </tr>
 
     <!-- it -->
     <tr>
-      <th class="src" rowspan="3">it</th>
-      <td class="model">HENT-SRT-M20&times;9</td>
-      <td>18.18</td><td>15.05</td><td>19.19</td><td>19.32</td><td>-</td><td>19.06</td><td>18.60</td><td>19.00</td><td>19.91</td>
+      <th rowspan="3" align="center" valign="middle">it</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td align="center">18.18</td><td align="center">15.05</td><td align="center">19.19</td><td align="center">19.32</td><td align="center">-</td><td align="center">19.06</td><td align="center">18.60</td><td align="center">19.00</td><td align="center">19.91</td>
     </tr>
     <tr>
-      <td class="model">HENT-SRT-M2M</td>
-      <td>13.10</td><td>13.19</td><td>13.13</td><td>13.24</td><td>-</td><td>13.17</td><td>12.98</td><td>13.18</td><td>13.27</td>
+      <td align="left">HENT-SRT-M2M</td>
+      <td align="center">13.10</td><td align="center">13.19</td><td align="center">13.13</td><td align="center">13.24</td><td align="center">-</td><td align="center">13.17</td><td align="center">12.98</td><td align="center">13.18</td><td align="center">13.27</td>
     </tr>
     <tr>
-      <td class="model">LCMA-SRT</td>
-      <td><strong>12.50</strong></td><td><strong>12.41</strong></td><td><strong>12.52</strong></td><td><strong>12.63</strong></td>
-      <td>-</td><td><strong>12.59</strong></td><td><strong>12.42</strong></td><td><strong>12.62</strong></td><td><strong>12.66</strong></td>
+      <td align="left">LCMA-SRT</td>
+      <td align="center"><strong>12.50</strong></td><td align="center"><strong>12.41</strong></td><td align="center"><strong>12.52</strong></td><td align="center"><strong>12.63</strong></td>
+      <td align="center">-</td><td align="center"><strong>12.59</strong></td><td align="center"><strong>12.42</strong></td><td align="center"><strong>12.62</strong></td><td align="center"><strong>12.66</strong></td>
     </tr>
 
     <!-- nl -->
     <tr>
-      <th class="src" rowspan="3">nl</th>
-      <td class="model">HENT-SRT-M20&times;9</td>
-      <td>38.99</td><td>32.95</td><td>38.85</td><td>38.85</td><td>39.52</td><td>-</td><td>38.99</td><td>39.32</td><td>39.26</td>
+      <th rowspan="3" align="center" valign="middle">nl</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td align="center">38.99</td><td align="center">32.95</td><td align="center">38.85</td><td align="center">38.85</td><td align="center">39.52</td><td align="center">-</td><td align="center">38.99</td><td align="center">39.32</td><td align="center">39.26</td>
     </tr>
     <tr>
-      <td class="model">HENT-SRT-M2M</td>
-      <td>28.59</td><td>28.65</td><td>28.73</td><td>28.46</td><td>28.62</td><td>-</td><td>28.46</td><td>28.46</td><td>28.47</td>
+      <td align="left">HENT-SRT-M2M</td>
+      <td align="center">28.59</td><td align="center">28.65</td><td align="center">28.73</td><td align="center">28.46</td><td align="center">28.62</td><td align="center">-</td><td align="center">28.46</td><td align="center">28.46</td><td align="center">28.47</td>
     </tr>
     <tr>
-      <td class="model">LCMA-SRT</td>
-      <td><strong>27.01</strong></td><td><strong>27.23</strong></td><td><strong>26.89</strong></td><td><strong>26.91</strong></td>
-      <td><strong>27.20</strong></td><td>-</td><td><strong>26.93</strong></td><td><strong>27.07</strong></td><td><strong>26.82</strong></td>
+      <td align="left">LCMA-SRT</td>
+      <td align="center"><strong>27.01</strong></td><td align="center"><strong>27.23</strong></td><td align="center"><strong>26.89</strong></td><td align="center"><strong>26.91</strong></td>
+      <td align="center"><strong>27.20</strong></td><td align="center">-</td><td align="center"><strong>26.93</strong></td><td align="center"><strong>27.07</strong></td><td align="center"><strong>26.82</strong></td>
     </tr>
 
     <!-- pl -->
     <tr>
-      <th class="src" rowspan="3">pl</th>
-      <td class="model">HENT-SRT-M20&times;9</td>
-      <td>25.89</td><td>22.01</td><td>26.33</td><td>27.19</td><td>25.99</td><td>26.47</td><td>-</td><td>27.13</td><td>27.36</td>
+      <th rowspan="3" align="center" valign="middle">pl</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td align="center">25.89</td><td align="center">22.01</td><td align="center">26.33</td><td align="center">27.19</td><td align="center">25.99</td><td align="center">26.47</td><td align="center">-</td><td align="center">27.13</td><td align="center">27.36</td>
     </tr>
     <tr>
-      <td class="model">HENT-SRT-M2M</td>
-      <td>18.26</td><td>18.27</td><td>18.14</td><td>18.21</td><td>17.87</td><td>18.27</td><td>-</td><td>18.29</td><td>18.00</td>
+      <td align="left">HENT-SRT-M2M</td>
+      <td align="center">18.26</td><td align="center">18.27</td><td align="center">18.14</td><td align="center">18.21</td><td align="center">17.87</td><td align="center">18.27</td><td align="center">-</td><td align="center">18.29</td><td align="center">18.00</td>
     </tr>
     <tr>
-      <td class="model">LCMA-SRT</td>
-      <td><strong>17.54</strong></td><td><strong>17.39</strong></td><td><strong>17.32</strong></td><td><strong>17.36</strong></td>
-      <td><strong>17.01</strong></td><td><strong>17.43</strong></td><td>-</td><td><strong>17.57</strong></td><td><strong>17.11</strong></td>
+      <td align="left">LCMA-SRT</td>
+      <td align="center"><strong>17.54</strong></td><td align="center"><strong>17.39</strong></td><td align="center"><strong>17.32</strong></td><td align="center"><strong>17.36</strong></td>
+      <td align="center"><strong>17.01</strong></td><td align="center"><strong>17.43</strong></td><td align="center">-</td><td align="center"><strong>17.57</strong></td><td align="center"><strong>17.11</strong></td>
     </tr>
 
     <!-- pt -->
     <tr>
-      <th class="src" rowspan="3">pt</th>
-      <td class="model">HENT-SRT-M20&times;9</td>
-      <td>19.90</td><td>16.27</td><td>21.74</td><td>20.82</td><td>20.77</td><td>20.99</td><td>20.48</td><td>-</td><td>20.53</td>
+      <th rowspan="3" align="center" valign="middle">pt</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td align="center">19.90</td><td align="center">16.27</td><td align="center">21.74</td><td align="center">20.82</td><td align="center">20.77</td><td align="center">20.99</td><td align="center">20.48</td><td align="center">-</td><td align="center">20.53</td>
     </tr>
     <tr>
-      <td class="model">HENT-SRT-M2M</td>
-      <td>13.60</td><td>13.59</td><td>13.52</td><td>13.59</td><td>13.38</td><td>13.58</td><td>13.57</td><td>-</td><td>13.34</td>
+      <td align="left">HENT-SRT-M2M</td>
+      <td align="center">13.60</td><td align="center">13.59</td><td align="center">13.52</td><td align="center">13.59</td><td align="center">13.38</td><td align="center">13.58</td><td align="center">13.57</td><td align="center">-</td><td align="center">13.34</td>
     </tr>
     <tr>
-      <td class="model">LCMA-SRT</td>
-      <td><strong>12.37</strong></td><td><strong>12.72</strong></td><td><strong>12.28</strong></td><td><strong>12.37</strong></td>
-      <td><strong>12.08</strong></td><td><strong>12.38</strong></td><td><strong>12.40</strong></td><td>-</td><td><strong>12.19</strong></td>
+      <td align="left">LCMA-SRT</td>
+      <td align="center"><strong>12.37</strong></td><td align="center"><strong>12.72</strong></td><td align="center"><strong>12.28</strong></td><td align="center"><strong>12.37</strong></td>
+      <td align="center"><strong>12.08</strong></td><td align="center"><strong>12.38</strong></td><td align="center"><strong>12.40</strong></td><td align="center">-</td><td align="center"><strong>12.19</strong></td>
     </tr>
 
     <!-- ro -->
     <tr>
-      <th class="src" rowspan="3">ro</th>
-      <td class="model">HENT-SRT-M20&times;9</td>
-      <td>22.32</td><td>15.85</td><td>21.87</td><td>22.04</td><td>23.97</td><td>22.88</td><td>23.63</td><td>22.82</td><td>-</td>
+      <th rowspan="3" align="center" valign="middle">ro</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td align="center">22.32</td><td align="center">15.85</td><td align="center">21.87</td><td align="center">22.04</td><td align="center">23.97</td><td align="center">22.88</td><td align="center">23.63</td><td align="center">22.82</td><td align="center">-</td>
     </tr>
     <tr>
-      <td class="model">HENT-SRT-M2M</td>
-      <td>14.59</td><td>14.20</td><td>14.52</td><td>14.42</td><td>14.17</td><td>14.59</td><td>14.49</td><td>14.65</td><td>-</td>
+      <td align="left">HENT-SRT-M2M</td>
+      <td align="center">14.59</td><td align="center">14.20</td><td align="center">14.52</td><td align="center">14.42</td><td align="center">14.17</td><td align="center">14.59</td><td align="center">14.49</td><td align="center">14.65</td><td align="center">-</td>
     </tr>
     <tr>
-      <td class="model">LCMA-SRT</td>
-      <td><strong>13.64</strong></td><td><strong>13.29</strong></td><td><strong>13.51</strong></td><td><strong>13.46</strong></td>
-      <td><strong>13.38</strong></td><td><strong>13.61</strong></td><td><strong>13.54</strong></td><td><strong>13.72</strong></td><td>-</td>
+      <td align="left">LCMA-SRT</td>
+      <td align="center"><strong>13.64</strong></td><td align="center"><strong>13.29</strong></td><td align="center"><strong>13.51</strong></td><td align="center"><strong>13.46</strong></td>
+      <td align="center"><strong>13.38</strong></td><td align="center"><strong>13.61</strong></td><td align="center"><strong>13.54</strong></td><td align="center"><strong>13.72</strong></td><td align="center">-</td>
     </tr>
   </tbody>
 </table>
+
 
 
 
