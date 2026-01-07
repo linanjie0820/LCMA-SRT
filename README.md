@@ -774,6 +774,309 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
   </tbody>
 </table>
 
+### COMET
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">SRC\TGT</th>
+      <th rowspan="2" align="left">Model</th>
+      <th colspan="9">COMET &#8593;</th>
+    </tr>
+    <tr>
+      <th>de</th><th>en</th><th>es</th><th>fr</th><th>it</th><th>nl</th><th>pl</th><th>pt</th><th>ro</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">de</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>-</td><td>0.615</td><td>0.531</td><td>0.479</td><td>0.504</td><td>0.549</td><td>0.521</td><td>0.544</td><td>0.545</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>-</td><td>0.522</td><td>0.453</td><td>0.407</td><td>0.409</td><td>0.397</td><td>0.383</td><td>0.447</td><td>0.391</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td>-</td><td><strong>0.683</strong></td><td><strong>0.624</strong></td><td><strong>0.572</strong></td><td><strong>0.591</strong></td><td><strong>0.604</strong></td><td><strong>0.591</strong></td><td><strong>0.636</strong></td><td><strong>0.627</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>-</td><td>0.528</td><td>0.451</td><td>0.400</td><td>0.412</td><td>0.383</td><td>0.377</td><td>0.446</td><td>0.393</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>-</td><td>0.640</td><td>0.590</td><td>0.533</td><td>0.557</td><td>0.546</td><td>0.542</td><td>0.601</td><td>0.572</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td>0.524</td><td>0.454</td><td>0.407</td><td>0.408</td><td>0.393</td><td>0.381</td><td>0.448</td><td>0.391</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td>0.675</td><td>0.614</td><td>0.565</td><td>0.578</td><td>0.601</td><td>0.578</td><td>0.629</td><td>0.626</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">en</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>0.571</td><td>-</td><td>0.641</td><td>0.606</td><td>0.625</td><td>0.620</td><td>0.584</td><td>0.668</td><td>0.680</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>0.421</td><td>-</td><td>0.533</td><td>0.470</td><td>0.487</td><td>0.430</td><td>0.419</td><td>0.524</td><td>0.458</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>0.638</strong></td><td>-</td><td><strong>0.741</strong></td><td><strong>0.690</strong></td><td><strong>0.714</strong></td><td><strong>0.674</strong></td><td><strong>0.663</strong></td><td><strong>0.749</strong></td><td><strong>0.765</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>0.422</td><td>-</td><td>0.535</td><td>0.467</td><td>0.495</td><td>0.424</td><td>0.421</td><td>0.528</td><td>0.463</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>0.582</td><td>-</td><td>0.696</td><td>0.637</td><td>0.664</td><td>0.612</td><td>0.590</td><td>0.704</td><td>0.693</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>0.413</td><td>-</td><td>0.540</td><td>0.469</td><td>0.488</td><td>0.428</td><td>0.423</td><td>0.532</td><td>0.459</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>0.626</td><td>-</td><td>0.733</td><td><strong>0.690</strong></td><td>0.705</td><td>0.661</td><td>0.649</td><td>0.742</td><td>0.762</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">es</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>0.488</td><td>0.652</td><td>-</td><td>0.548</td><td>0.571</td><td>0.534</td><td>0.546</td><td>0.636</td><td>0.589</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>0.357</td><td>0.536</td><td>-</td><td>0.416</td><td>0.424</td><td>0.385</td><td>0.374</td><td>0.464</td><td>0.396</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>0.544</strong></td><td><strong>0.708</strong></td><td>-</td><td><strong>0.627</strong></td><td><strong>0.657</strong></td><td><strong>0.584</strong></td><td><strong>0.609</strong></td><td><strong>0.709</strong></td><td>0.663</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>0.361</td><td>0.541</td><td>-</td><td>0.416</td><td>0.430</td><td>0.377</td><td>0.375</td><td>0.468</td><td>0.394</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>0.503</td><td>0.669</td><td>-</td><td>0.579</td><td>0.609</td><td>0.539</td><td>0.556</td><td>0.665</td><td>0.608</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>0.358</td><td>0.539</td><td>-</td><td>0.419</td><td>0.425</td><td>0.382</td><td>0.376</td><td>0.466</td><td>0.394</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>0.541</td><td>0.702</td><td>-</td><td>0.622</td><td>0.651</td><td>0.578</td><td>0.600</td><td>0.705</td><td><strong>0.666</strong></td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">fr</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>0.499</td><td>0.685</td><td>0.603</td><td>-</td><td>0.603</td><td>0.551</td><td>0.555</td><td>0.650</td><td>0.618</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>0.373</td><td>0.535</td><td>0.484</td><td>-</td><td>0.440</td><td>0.396</td><td>0.385</td><td>0.481</td><td>0.408</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>0.561</strong></td><td><strong>0.737</strong></td><td><strong>0.700</strong></td><td>-</td><td><strong>0.685</strong></td><td><strong>0.603</strong></td><td><strong>0.616</strong></td><td><strong>0.723</strong></td><td><strong>0.701</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>0.379</td><td>0.552</td><td>0.482</td><td>-</td><td>0.442</td><td>0.391</td><td>0.385</td><td>0.482</td><td>0.410</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>0.519</td><td>0.696</td><td>0.658</td><td>-</td><td>0.636</td><td>0.555</td><td>0.566</td><td>0.674</td><td>0.637</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>0.372</td><td>0.538</td><td>0.485</td><td>-</td><td>0.440</td><td>0.393</td><td>0.385</td><td>0.484</td><td>0.411</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>0.553</td><td>0.730</td><td>0.685</td><td>-</td><td>0.673</td><td>0.592</td><td>0.605</td><td>0.711</td><td>0.695</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">it</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>0.507</td><td>0.679</td><td>0.614</td><td>0.569</td><td>-</td><td>0.551</td><td>0.568</td><td>0.650</td><td>0.623</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>0.372</td><td>0.560</td><td>0.477</td><td>0.425</td><td>-</td><td>0.393</td><td>0.380</td><td>0.472</td><td>0.404</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>0.560</strong></td><td><strong>0.728</strong></td><td><strong>0.698</strong></td><td><strong>0.640</strong></td><td>-</td><td><strong>0.600</strong></td><td><strong>0.619</strong></td><td><strong>0.717</strong></td><td>0.686</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>0.374</td><td>0.578</td><td>0.476</td><td>0.428</td><td>-</td><td>0.391</td><td>0.385</td><td>0.478</td><td>0.412</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>0.520</td><td>0.689</td><td>0.657</td><td>0.593</td><td>-</td><td>0.553</td><td>0.570</td><td>0.672</td><td>0.630</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>0.370</td><td>0.572</td><td>0.483</td><td>0.428</td><td>-</td><td>0.393</td><td>0.384</td><td>0.476</td><td>0.411</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>0.558</td><td>0.722</td><td>0.693</td><td>0.635</td><td>-</td><td>0.591</td><td>0.615</td><td>0.711</td><td><strong>0.689</strong></td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">nl</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>0.444</td><td>0.581</td><td>0.500</td><td>0.460</td><td>0.467</td><td>-</td><td>0.486</td><td>0.509</td><td>0.509</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>0.367</td><td>0.508</td><td>0.435</td><td>0.397</td><td>0.402</td><td>-</td><td>0.365</td><td>0.435</td><td>0.380</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>0.538</strong></td><td><strong>0.660</strong></td><td><strong>0.595</strong></td><td><strong>0.544</strong></td><td><strong>0.561</strong></td><td>-</td><td><strong>0.556</strong></td><td><strong>0.604</strong></td><td><strong>0.593</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>0.359</td><td>0.532</td><td>0.431</td><td>0.395</td><td>0.403</td><td>-</td><td>0.367</td><td>0.432</td><td>0.378</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>0.493</td><td>0.615</td><td>0.556</td><td>0.510</td><td>0.527</td><td>-</td><td>0.512</td><td>0.569</td><td>0.549</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>0.361</td><td>0.517</td><td>0.434</td><td>0.398</td><td>0.400</td><td>-</td><td>0.372</td><td>0.433</td><td>0.377</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>0.528</td><td>0.651</td><td>0.582</td><td>0.538</td><td>0.550</td><td>-</td><td>0.545</td><td>0.601</td><td>0.587</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">pl</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>0.515</td><td>0.643</td><td>0.568</td><td>0.518</td><td>0.545</td><td>0.543</td><td>-</td><td>0.584</td><td>0.583</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>0.385</td><td>0.539</td><td>0.469</td><td>0.424</td><td>0.429</td><td>0.397</td><td>-</td><td>0.462</td><td>0.401</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>0.584</strong></td><td><strong>0.709</strong></td><td><strong>0.667</strong></td><td><strong>0.612</strong></td><td><strong>0.651</strong></td><td><strong>0.608</strong></td><td>-</td><td><strong>0.683</strong></td><td><strong>0.677</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>0.380</td><td>0.552</td><td>0.464</td><td>0.419</td><td>0.431</td><td>0.388</td><td>-</td><td>0.462</td><td>0.402</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>0.539</td><td>0.669</td><td>0.633</td><td>0.572</td><td>0.605</td><td>0.561</td><td>-</td><td>0.645</td><td>0.624</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>0.379</td><td>0.531</td><td>0.466</td><td>0.421</td><td>0.427</td><td>0.395</td><td>-</td><td>0.461</td><td>0.402</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>0.575</td><td>0.698</td><td>0.655</td><td>0.596</td><td>0.634</td><td>0.601</td><td>-</td><td>0.670</td><td>0.669</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">pt</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>0.522</td><td>0.692</td><td>0.631</td><td>0.584</td><td>0.605</td><td>0.556</td><td>0.576</td><td>-</td><td>0.636</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>0.381</td><td>0.557</td><td>0.491</td><td>0.439</td><td>0.444</td><td>0.402</td><td>0.390</td><td>-</td><td>0.409</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>0.581</strong></td><td><strong>0.744</strong></td><td><strong>0.722</strong></td><td><strong>0.662</strong></td><td><strong>0.695</strong></td><td><strong>0.609</strong></td><td><strong>0.632</strong></td><td>-</td><td><strong>0.710</strong></td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>0.381</td><td>0.594</td><td>0.482</td><td>0.436</td><td>0.444</td><td>0.397</td><td>0.392</td><td>-</td><td>0.409</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>0.541</td><td>0.708</td><td>0.684</td><td>0.623</td><td>0.654</td><td>0.566</td><td>0.585</td><td>-</td><td>0.654</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>0.377</td><td>0.572</td><td>0.489</td><td>0.438</td><td>0.440</td><td>0.396</td><td>0.387</td><td>-</td><td>0.409</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>0.577</td><td>0.738</td><td>0.710</td><td>0.656</td><td>0.688</td><td>0.604</td><td>0.624</td><td>-</td><td>0.708</td>
+    </tr>
+  </tbody>
+
+  <tbody>
+    <tr>
+      <th rowspan="7">ro</th>
+      <td align="left">HENT-SRT-M20&times;9</td>
+      <td>0.514</td><td>0.697</td><td>0.606</td><td>0.575</td><td>0.596</td><td>0.563</td><td>0.569</td><td>0.627</td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">HENT-SRT-M2M</td>
+      <td>0.381</td><td>0.585</td><td>0.487</td><td>0.443</td><td>0.446</td><td>0.408</td><td>0.386</td><td>0.480</td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">LCMA-SRT</td>
+      <td><strong>0.587</strong></td><td><strong>0.753</strong></td><td><strong>0.711</strong></td><td><strong>0.667</strong></td><td><strong>0.696</strong></td><td><strong>0.624</strong></td><td><strong>0.642</strong></td><td><strong>0.724</strong></td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;MoE</td>
+      <td>0.384</td><td>0.591</td><td>0.486</td><td>0.443</td><td>0.449</td><td>0.405</td><td>0.388</td><td>0.484</td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE&#8594;T-Bias</td>
+      <td>0.537</td><td>0.713</td><td>0.665</td><td>0.616</td><td>0.644</td><td>0.574</td><td>0.574</td><td>0.680</td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>0.377</td><td>0.563</td><td>0.488</td><td>0.441</td><td>0.447</td><td>0.405</td><td>0.386</td><td>0.480</td><td>-</td>
+    </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>0.582</td><td>0.747</td><td>0.699</td><td>0.662</td><td>0.687</td><td>0.618</td><td>0.628</td><td>0.714</td><td>-</td>
+    </tr>
+  </tbody>
+</table>
+
 
 
 ### HENT-SRT(Many-to-One)
