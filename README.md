@@ -167,6 +167,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
 
 ## Many-to-Many Joint Training (All direction）
 
+### WER
 
 <table>
   <thead>
@@ -470,27 +471,14 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
 </table>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### BLEU
 
 <table>
   <thead>
     <tr>
       <th rowspan="2">SRC\TGT</th>
       <th rowspan="2" align="left">Model</th>
-      <th colspan="9">WER (%) &#8595;</th>
+      <th colspan="9">BLEU &#8593;</th>
     </tr>
     <tr>
       <th>de</th><th>en</th><th>es</th><th>fr</th><th>it</th><th>nl</th><th>pl</th><th>pt</th><th>ro</th>
@@ -501,349 +489,292 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
     <tr>
       <th rowspan="7">de</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+      <td>-</td><td>17.5</td><td>13.3</td><td>12.1</td><td>8.7</td><td>16.2</td><td>5.9</td><td>12.4</td><td>8.3</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+      <td>-</td><td>11.0</td><td>3.7</td><td>3.3</td><td>1.1</td><td>4.1</td><td>1.6</td><td>4.0</td><td>2.2</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>-</td><td><strong>22.0</strong></td><td><strong>19.7</strong></td><td><strong>20.2</strong></td><td><strong>14.5</strong></td><td><strong>19.0</strong></td><td><strong>8.9</strong></td><td><strong>18.7</strong></td><td><strong>13.5</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>-</td><td>12.4</td><td>3.2</td><td>2.1</td><td>1.0</td><td>2.8</td><td>1.4</td><td>3.7</td><td>2.1</td>
     </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>-</td><td>19.6</td><td>18.0</td><td>18.0</td><td>12.5</td><td>16.5</td><td>6.9</td><td>17.0</td><td>11.5</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>-</td><td>11.4</td><td>4.1</td><td>3.0</td><td>1.0</td><td>3.4</td><td>1.5</td><td>4.0</td><td>2.2</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
-    </tr>    
+      <td>-</td><td>21.4</td><td>19.2</td><td>19.8</td><td>13.9</td><td>18.9</td><td>8.7</td><td>18.5</td><td><strong>13.5</strong></td>
+    </tr>
   </tbody>
 
   <tbody>
     <tr>
       <th rowspan="7">en</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+      <td>15.4</td><td>-</td><td>26.0</td><td>24.6</td><td>19.0</td><td>21.9</td><td>9.7</td><td>23.1</td><td>19.8</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+      <td>4.0</td><td>-</td><td>9.7</td><td>6.5</td><td>3.1</td><td>5.3</td><td>1.6</td><td>7.1</td><td>4.5</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td><strong>20.1</strong></td><td>-</td><td><strong>33.4</strong></td><td>30.7</td><td><strong>25.0</strong></td><td><strong>25.4</strong></td><td><strong>14.7</strong></td><td><strong>29.4</strong></td><td><strong>26.3</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>3.8</td><td>-</td><td>9.9</td><td>6.0</td><td>3.1</td><td>4.6</td><td>1.3</td><td>7.5</td><td>4.1</td>
     </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>17.4</td><td>-</td><td>30.0</td><td>27.3</td><td>22.4</td><td>22.1</td><td>11.2</td><td>26.2</td><td>21.1</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>3.1</td><td>-</td><td>10.6</td><td>6.1</td><td>2.9</td><td>4.5</td><td>1.4</td><td>7.5</td><td>4.1</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
-    </tr> 
+      <td>19.6</td><td>-</td><td>32.5</td><td><strong>30.9</strong></td><td>24.4</td><td>24.5</td><td>14.3</td><td>28.7</td><td>25.8</td>
+    </tr>
   </tbody>
 
   <tbody>
     <tr>
       <th rowspan="7">es</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+      <td>9.9</td><td>22.1</td><td>-</td><td>20.2</td><td>15.7</td><td>15.1</td><td>6.9</td><td>22.4</td><td>12.2</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+      <td>2.1</td><td>13.4</td><td>-</td><td>3.9</td><td>1.5</td><td>3.1</td><td>0.9</td><td>5.4</td><td>2.2</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td><strong>13.7</strong></td><td><strong>26.1</strong></td><td>-</td><td>26.3</td><td><strong>21.0</strong></td><td><strong>19.4</strong></td><td><strong>10.3</strong></td><td><strong>26.6</strong></td><td><strong>17.7</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>2.0</td><td>13.9</td><td>-</td><td>3.5</td><td>1.6</td><td>2.3</td><td>1.1</td><td>5.0</td><td>1.9</td>
     </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>11.8</td><td>23.3</td><td>-</td><td>23.7</td><td>18.4</td><td>17.3</td><td>7.7</td><td>23.7</td><td>14.8</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>1.8</td><td>13.2</td><td>-</td><td>3.7</td><td>1.4</td><td>2.5</td><td>1.1</td><td>5.5</td><td>2.2</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
-    </tr> 
+      <td>13.3</td><td>25.1</td><td>-</td><td><strong>26.5</strong></td><td>20.6</td><td>19.3</td><td>10.2</td><td>26.1</td><td>17.5</td>
+    </tr>
   </tbody>
 
   <tbody>
     <tr>
       <th rowspan="7">fr</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+      <td>11.0</td><td>23.5</td><td>20.3</td><td>-</td><td>17.6</td><td>16.9</td><td>7.4</td><td>23.3</td><td>13.0</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+      <td>2.9</td><td>11.9</td><td>6.4</td><td>-</td><td>2.2</td><td>4.0</td><td>1.3</td><td>6.5</td><td>2.4</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td><strong>14.9</strong></td><td><strong>28.6</strong></td><td><strong>27.0</strong></td><td>-</td><td><strong>22.5</strong></td><td><strong>21.3</strong></td><td><strong>11.1</strong></td><td><strong>27.5</strong></td><td>18.3</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>2.6</td><td>13.8</td><td>5.2</td><td>-</td><td>2.0</td><td>3.0</td><td>1.3</td><td>5.9</td><td>2.1</td>
     </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>13.3</td><td>24.8</td><td>24.7</td><td>-</td><td>20.1</td><td>18.5</td><td>9.0</td><td>25.0</td><td>15.2</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>2.3</td><td>11.8</td><td>6.8</td><td>-</td><td>2.2</td><td>3.4</td><td>1.5</td><td>6.1</td><td>2.3</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
-    </tr> 
+      <td>14.1</td><td>27.3</td><td>25.9</td><td>-</td><td>22.4</td><td>20.2</td><td>10.9</td><td>26.9</td><td><strong>18.6</strong></td>
+    </tr>
   </tbody>
 
   <tbody>
     <tr>
       <th rowspan="7">it</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+      <td>11.3</td><td>23.0</td><td>21.3</td><td>20.3</td><td>-</td><td>16.1</td><td>8.3</td><td>22.4</td><td>13.4</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+      <td>2.9</td><td>14.7</td><td>5.1</td><td>4.0</td><td>-</td><td>3.2</td><td>1.7</td><td>5.6</td><td>2.0</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td><strong>14.8</strong></td><td><strong>27.0</strong></td><td><strong>27.3</strong></td><td><strong>25.3</strong></td><td>-</td><td><strong>20.2</strong></td><td>11.0</td><td>26.1</td><td><strong>17.8</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>2.6</td><td>16.8</td><td>4.3</td><td>3.0</td><td>-</td><td>2.6</td><td>1.6</td><td>5.2</td><td>1.7</td>
     </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>12.9</td><td>23.5</td><td>24.9</td><td>22.7</td><td>-</td><td>17.3</td><td>8.8</td><td>24.1</td><td>14.2</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>2.1</td><td>15.2</td><td>5.1</td><td>3.5</td><td>-</td><td>2.8</td><td>1.7</td><td>5.4</td><td>1.8</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
-    </tr> 
+      <td>14.0</td><td>26.0</td><td>26.8</td><td>25.1</td><td>-</td><td>19.4</td><td><strong>11.2</strong></td><td><strong>26.5</strong></td><td>17.7</td>
+    </tr>
   </tbody>
+
   <tbody>
     <tr>
       <th rowspan="7">nl</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+      <td>7.1</td><td>15.6</td><td>11.3</td><td>10.4</td><td>7.3</td><td>-</td><td>3.7</td><td>10.4</td><td>6.3</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+      <td>2.3</td><td>9.8</td><td>3.1</td><td>2.6</td><td>1.2</td><td>-</td><td>0.9</td><td>2.9</td><td>1.9</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td><strong>12.1</strong></td><td><strong>21.0</strong></td><td><strong>17.6</strong></td><td>16.5</td><td><strong>13.6</strong></td><td>-</td><td><strong>7.0</strong></td><td>16.9</td><td>11.6</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>1.7</td><td>12.0</td><td>2.1</td><td>1.8</td><td>0.9</td><td>-</td><td>0.6</td><td>2.1</td><td>1.2</td>
     </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>10.1</td><td>18.1</td><td>16.3</td><td>15.3</td><td>11.7</td><td>-</td><td>4.9</td><td>15.5</td><td>10.0</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>1.6</td><td>10.8</td><td>2.8</td><td>2.6</td><td>1.0</td><td>-</td><td>1.1</td><td>2.7</td><td>1.4</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
-    </tr> 
+      <td>11.8</td><td>20.0</td><td>17.5</td><td><strong>16.8</strong></td><td>12.8</td><td>-</td><td>6.7</td><td><strong>17.0</strong></td><td><strong>11.8</strong></td>
+    </tr>
   </tbody>
+
   <tbody>
     <tr>
       <th rowspan="7">pl</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+      <td>9.5</td><td>19.3</td><td>17.1</td><td>15.7</td><td>11.9</td><td>14.3</td><td>-</td><td>14.6</td><td>10.0</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+      <td>2.4</td><td>12.1</td><td>4.6</td><td>3.8</td><td>1.6</td><td>3.4</td><td>-</td><td>3.8</td><td>2.1</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td><strong>14.3</strong></td><td><strong>23.9</strong></td><td><strong>24.1</strong></td><td><strong>22.9</strong></td><td><strong>18.6</strong></td><td><strong>19.5</strong></td><td>-</td><td>20.8</td><td><strong>16.5</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>2.2</td><td>13.9</td><td>3.7</td><td>3.0</td><td>1.5</td><td>2.2</td><td>-</td><td>3.2</td><td>1.4</td>
     </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>12.3</td><td>21.5</td><td>22.1</td><td>21.1</td><td>16.5</td><td>17.6</td><td>-</td><td>19.4</td><td>13.4</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>2.1</td><td>11.6</td><td>4.9</td><td>4.2</td><td>1.3</td><td>2.9</td><td>-</td><td>4.0</td><td>2.0</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
-    </tr> 
+      <td>13.5</td><td>23.3</td><td>22.6</td><td>22.3</td><td>18.0</td><td>19.2</td><td>-</td><td><strong>20.9</strong></td><td>16.2</td>
+    </tr>
   </tbody>
+
   <tbody>
     <tr>
       <th rowspan="7">pt</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+      <td>10.9</td><td>23.7</td><td>22.1</td><td>21.3</td><td>17.3</td><td>15.6</td><td>7.5</td><td>-</td><td>13.9</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+      <td>2.3</td><td>13.3</td><td>6.6</td><td>4.0</td><td>1.9</td><td>3.0</td><td>1.1</td><td>-</td><td>2.5</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td><strong>15.4</strong></td><td><strong>28.1</strong></td><td><strong>28.3</strong></td><td>27.0</td><td><strong>22.8</strong></td><td><strong>19.7</strong></td><td>10.5</td><td>-</td><td><strong>19.0</strong></td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>1.9</td><td>17.4</td><td>4.7</td><td>3.4</td><td>1.4</td><td>2.1</td><td>1.0</td><td>-</td><td>1.7</td>
     </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>13.6</td><td>24.9</td><td>25.6</td><td>24.9</td><td>20.7</td><td>18.0</td><td>8.8</td><td>-</td><td>16.1</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>1.7</td><td>14.6</td><td>6.7</td><td>3.9</td><td>1.4</td><td>2.3</td><td>1.2</td><td>-</td><td>1.8</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
-    </tr> 
+      <td>14.5</td><td>26.7</td><td>27.5</td><td><strong>27.1</strong></td><td>22.5</td><td>19.0</td><td><strong>10.6</strong></td><td>-</td><td><strong>19.0</strong></td>
+    </tr>
   </tbody>
+
   <tbody>
     <tr>
       <th rowspan="7">ro</th>
       <td align="left">HENT-SRT-M20&times;9</td>
-      <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
+      <td>10.9</td><td>25.3</td><td>21.4</td><td>21.4</td><td>15.8</td><td>16.0</td><td>7.9</td><td>18.8</td><td>-</td>
     </tr>
     <tr>
       <td align="left">HENT-SRT-M2M</td>
-      <td>-</td><td>19.09</td><td>18.77</td><td>18.82</td><td>19.09</td><td>18.86</td><td>18.79</td><td>18.99</td><td>18.86</td>
+      <td>1.9</td><td>16.4</td><td>4.6</td><td>3.7</td><td>1.5</td><td>2.2</td><td>0.7</td><td>3.9</td><td>-</td>
     </tr>
     <tr>
       <td align="left">LCMA-SRT</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td><strong>15.8</strong></td><td><strong>30.1</strong></td><td><strong>28.9</strong></td><td><strong>28.4</strong></td><td><strong>22.1</strong></td><td><strong>19.7</strong></td><td><strong>12.2</strong></td><td><strong>25.3</strong></td><td>-</td>
     </tr>
     <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>1.9</td><td>17.5</td><td>4.1</td><td>3.4</td><td>1.6</td><td>1.8</td><td>0.7</td><td>3.4</td><td>-</td>
     </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>13.7</td><td>25.9</td><td>26.3</td><td>25.4</td><td>19.6</td><td>17.6</td><td>9.1</td><td>23.3</td><td>-</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+      <td>1.5</td><td>13.5</td><td>6.5</td><td>3.9</td><td>1.5</td><td>2.3</td><td>0.9</td><td>4.5</td><td>-</td>
     </tr>
-    </tr>
-      <tr>
+    <tr>
       <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
-      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
-      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
-    </tr> 
+      <td>15.0</td><td>29.2</td><td>27.7</td><td>28.3</td><td>21.8</td><td>19.2</td><td>11.8</td><td>24.7</td><td>-</td>
+    </tr>
   </tbody>
 </table>
+
+
 
 ### HENT-SRT(Many-to-One)
 **Bleu/Comet ↑**
