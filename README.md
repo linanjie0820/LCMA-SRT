@@ -49,8 +49,7 @@ The model checkpoints are available for anonymous review on Figshare: checkpoint
     </tr>
   </tbody>
 </table>
-
-
+Multilingual ASR results on Europarl-ST. WER is reported per source language, and Avg denotes the overall average. We report the CR-CTC baseline and its variants with an unconditioned MoE adapter (+MoE), a source-identity bias (+S-Bias), and the proposed source-conditioned MoE adapter inserted after the ASR encoder (+SRC-MoE).
 ## Many-to-Many Joint Training (Average)
 <table>
   <thead>
