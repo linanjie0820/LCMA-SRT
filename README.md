@@ -193,6 +193,28 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>    
   </tbody>
 
   <tbody>
@@ -210,6 +232,28 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr> 
   </tbody>
 
   <tbody>
@@ -227,6 +271,28 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr> 
   </tbody>
 
   <tbody>
@@ -244,6 +310,28 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr> 
   </tbody>
 
   <tbody>
@@ -261,6 +349,28 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr> 
   </tbody>
   <tbody>
     <tr>
@@ -277,6 +387,28 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr> 
   </tbody>
   <tbody>
     <tr>
@@ -293,6 +425,28 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr> 
   </tbody>
   <tbody>
     <tr>
@@ -309,6 +463,28 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr> 
   </tbody>
   <tbody>
     <tr>
@@ -325,6 +501,28 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
       <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
       <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
     </tr>
+    <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;TGT-MoE→T-Bias</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o TGT-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr>
+    </tr>
+      <tr>
+      <td align="left">&nbsp;&nbsp;&nbsp;w/o SRC-MoE</td>
+      <td>-</td><td><strong>18.01</strong></td><td><strong>17.84</strong></td><td><strong>17.85</strong></td>
+      <td><strong>18.23</strong></td><td><strong>17.92</strong></td><td><strong>17.75</strong></td><td><strong>17.93</strong></td><td><strong>17.99</strong></td>
+    </tr> 
   </tbody>
 </table>
 
