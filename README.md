@@ -180,7 +180,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
 
   <tbody>
     <tr>
-      <th rowspan="5">de</th>
+      <th rowspan="7">de</th>
       <td align="left">HENT-SRT-M20&times;9</td>
       <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
     </tr>
@@ -219,7 +219,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
 
   <tbody>
     <tr>
-      <th rowspan="3">en</th>
+      <th rowspan="7">en</th>
       <td align="left">HENT-SRT-M20&times;9</td>
       <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
     </tr>
@@ -258,7 +258,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
 
   <tbody>
     <tr>
-      <th rowspan="3">es</th>
+      <th rowspan="7">es</th>
       <td align="left">HENT-SRT-M20&times;9</td>
       <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
     </tr>
@@ -297,7 +297,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
 
   <tbody>
     <tr>
-      <th rowspan="3">fr</th>
+      <th rowspan="7">fr</th>
       <td align="left">HENT-SRT-M20&times;9</td>
       <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
     </tr>
@@ -336,7 +336,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
 
   <tbody>
     <tr>
-      <th rowspan="3">it</th>
+      <th rowspan="7">it</th>
       <td align="left">HENT-SRT-M20&times;9</td>
       <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
     </tr>
@@ -374,7 +374,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
   </tbody>
   <tbody>
     <tr>
-      <th rowspan="3">nl</th>
+      <th rowspan="7">nl</th>
       <td align="left">HENT-SRT-M20&times;9</td>
       <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
     </tr>
@@ -412,7 +412,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
   </tbody>
   <tbody>
     <tr>
-      <th rowspan="3">pl</th>
+      <th rowspan="7">pl</th>
       <td align="left">HENT-SRT-M20&times;9</td>
       <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
     </tr>
@@ -450,7 +450,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
   </tbody>
   <tbody>
     <tr>
-      <th rowspan="3">pt</th>
+      <th rowspan="7">pt</th>
       <td align="left">HENT-SRT-M20&times;9</td>
       <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
     </tr>
@@ -488,7 +488,7 @@ Joint ASR and ST results on Europarl-ST. LMR is averaged over all 72 translation
   </tbody>
   <tbody>
     <tr>
-      <th rowspan="3">ro</th>
+      <th rowspan="7">ro</th>
       <td align="left">HENT-SRT-M20&times;9</td>
       <td>-</td><td>21.80</td><td>26.64</td><td>27.12</td><td>27.44</td><td>26.43</td><td>26.51</td><td>26.51</td><td>26.62</td>
     </tr>
