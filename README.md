@@ -9,7 +9,7 @@ Please refer to [document](https://k2-fsa.github.io/icefall/installation/index.h
 Please refer to this page to download the data: [Europarl-ST](https://www.mllp.upv.es/europarl-st/) 
 
 # Checkpoint
-The model checkpoints are available for anonymous review on Figshare: checkpoints
+The model checkpoints are available for anonymous review on OSF: [LCMA-SRT](https://osf.io/rnuhv/overview?view_only=a32d11613d424a21afdf32fd986c09d5)
 
 # Evaluation
 
