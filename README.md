@@ -13,7 +13,7 @@ The model checkpoints are available for anonymous review on OSF: [LCMA-SRT](http
 
 # Evaluation
 
-We evaluate ASR with word error rate (WER). For speech translation, we report BLEU, COMET, and sentence-level target-language mismatch rate (LMR) using an off-the-shelf language identification [model](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin): a hypothesis is matched only if it is classified as the specified target language with confidence ≥ 0.7. To ensure consistent comparisons, we normalize ASR transcripts and ST outputs by removing punctuation and evaluating case-insensitively.
+To ensure a comprehensive evaluation of speech recognition and translation quality, we utilize BLEU for surface-level matching, COMET for semantic adequacy, and sentence-level target-language mismatch rate (LMR) using an off-the-shelf language identification [model](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin), where a hypothesis is counted as matched only if it is classified as the specified target language with confidence $\ge 0.7$. Since ST targets are normalized during training and decoding, translation is evaluated in the same normalized form. ASR performance is assessed using word error rate (WER).
 
 # Main Results
 ## Multilingual ASR Pretraining
