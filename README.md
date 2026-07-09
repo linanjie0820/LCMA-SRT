@@ -20,19 +20,19 @@ See [egs/europarl_st/SRT/local/](egs/europarl_st/SRT/local/) for data preparatio
 ## Training
 
 ```bash
-cd egs/europarl_st/SRT/lcma_srt
+cd egs/europarl_st/SRT
 ```
 
 ### Stage 1: Multilingual ASR Pretraining
 
 ```bash
-bash train/stage1/cr_ctc_sc_moe.sh
+bash lcma_srt/train/stage1/cr_ctc_sc_moe.sh
 ```
 
 ### Stage 2: Many-to-Many Joint Training
 
 ```bash
-bash train/stage2/lcma_srt.sh
+bash lcma_srt/train/stage2/lcma_srt.sh
 ```
 
 ## Decoding
@@ -40,13 +40,13 @@ bash train/stage2/lcma_srt.sh
 ### Stage 1: ASR Decoding
 
 ```bash
-bash decode/stage1/decode_cr_ctc_sc_moe.sh
+bash lcma_srt/decode/stage1/decode_cr_ctc_sc_moe.sh
 ```
 
 ### Stage 2: Joint ASR+ST Decoding
 
 ```bash
-bash decode/stage2/decode_lcma_srt.sh
+bash lcma_srt/decode/stage2/decode_lcma_srt.sh
 ```
 
 ## Checkpoint
